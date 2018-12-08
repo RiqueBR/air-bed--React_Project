@@ -1,8 +1,22 @@
 import React from 'react';
+import PropertyTile from './PropertyTile';
 
 const PropertyTileBox = (props) => {
   return(
-    <h1>Property List</h1>
+    <div className="property-list">
+      <PropertyTile />
+      <PropertyTile />
+      <PropertyTile />
+      <PropertyTile />
+      <PropertyTile />
+      <PropertyTile />
+      <PropertyTile />
+      <PropertyTile />
+      <PropertyTile />
+      <PropertyTile />
+      <PropertyTile />
+      <PropertyTile />
+    </div>
   )
 }
 

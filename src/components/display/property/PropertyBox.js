@@ -5,7 +5,7 @@ import PropertyList from './PropertyList';
 const PropertyBox = (props) => {
   return(
     <div className="property-box">
-      <h1>Property Box</h1>
+      <h1>Homes in Location</h1>
       <PropertyList />
     </div>
   )

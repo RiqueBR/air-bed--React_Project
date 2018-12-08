@@ -1,3 +1,51 @@
 .property-box{
   background-color: blue;
 }
+
+.property-tile{
+  margin-right: 10pt;
+  background-color: white;
+  display: inline-block;
+  height: 200pt;
+  width: 180pt;
+}
+
+.place-holder-img{
+  width: 100%;
+  height: 100pt;
+  background-color: yellow;
+}
+
+.property-info-container{
+  height: 100pt;
+  width: 100%;
+  background-color: cyan;
+}
+
+h4{
+  margin: 0;
+}
+
+h5{
+  margin: 0;
+}
+
+p{
+  margin: 0;
+}
+
+.property-price{
+  display: inline-block;
+}
+
+.view-property-btn{
+  display: inline-block;
+}
+.property-list{
+  overflow-x: scroll;
+  overflow-y: hidden;
+  white-space: nowrap;
+  width:100%;
+  border-bottom-left-radius: 2pt;
+  border-bottom-right-radius: 2pt;
+}

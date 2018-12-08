@@ -1,8 +1,23 @@
 import React from 'react';
+import ExperienceTile from './ExperienceTile';
 
 const ExperienceTileBox = (props) => {
   return(
-    <h1>Experience List</h1>
+    <div className="experience-list">
+      <ExperienceTile />
+      <ExperienceTile />
+      <ExperienceTile />
+      <ExperienceTile />
+      <ExperienceTile />
+      <ExperienceTile />
+      <ExperienceTile />
+      <ExperienceTile />
+      <ExperienceTile />
+      <ExperienceTile />
+      <ExperienceTile />
+      <ExperienceTile />
+    </div>
+
   )
 }
 
