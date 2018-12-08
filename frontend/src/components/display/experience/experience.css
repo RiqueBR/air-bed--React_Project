@@ -1,0 +1,14 @@
+.experience-box{
+  background-color: green;
+}
+
+div.card-list{
+  display: inline-block;
+}
+
+div.single-card{
+  box-shadow: 0 0 3px 3px black;
+  height: 260px;
+  width: 260px;
+  margin: 1.2rem;
+}
