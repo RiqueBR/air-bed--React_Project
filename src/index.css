@@ -18,6 +18,10 @@ body {
   margin: 0;
 }
 
+.main{
+  height: 100%;
+  background-image: url("https://imgur.com/a/y6uZV3s");
+}
 code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New",
     monospace;

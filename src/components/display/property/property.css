@@ -14,6 +14,7 @@
   width: 100%;
   height: 100pt;
   background-color: yellow;
+    overflow: hidden;
 }
 
 .property-info-container{
@@ -22,8 +23,15 @@
   background-color: cyan;
 }
 
+.property-image{
+  width: 100%;
+
+}
+
 h4{
   margin: 0;
+  white-space: initial;
+  /* width: 100%; */
 }
 
 h5{
