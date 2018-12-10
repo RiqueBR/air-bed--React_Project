@@ -3,6 +3,7 @@ import {BrowserRouter as Router, Route, Switch} from 'react-router-dom';
 import './App.css';
 import MainContainer from './containers/Main.js';
 import SinglePropertyContainer from './containers/SinglePropertyContainer';
+import HomeContainer from './containers/Home'
 
 
 class App extends Component {
@@ -12,6 +13,7 @@ class App extends Component {
         <Router>
           <React.Fragment>
             <Switch>
+            <Route exact path="/" component={HomeContainer} />
             <Route exact path="/properties" component={MainContainer} />
             <Route exact path="/properties/:id" render={(props) => {
               const id = props.match.params.id;
