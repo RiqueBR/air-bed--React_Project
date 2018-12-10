@@ -16,6 +16,10 @@
   background-color: yellow;
 }
 
+.experience-img{
+  width: 100%
+}
+
 .experience-info-container {
   height: 100pt;
   width: 100%;
