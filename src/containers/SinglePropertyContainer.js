@@ -1,7 +1,9 @@
 import React from 'react';
+import Request from '../helpers/Request.js';
 
 class SinglePropertyContainer extends React.Component {
-  constructor(){
+  constructor(props){
+    super(props)
     this.state = {
       property: null
     }
@@ -18,9 +20,11 @@ request.get(url).then(data => {
   }
 
   render() {
+    if(!this.state.property) return null;
+
     return(
       <div>
-        <h1>Single Property Container</h1>
+        <h1>{this.state.property.name}</h1>
       </div>
     )
   }
