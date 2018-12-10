@@ -1,12 +1,13 @@
 .property-box{
-  background-color: blue;
+  background-color: white;
+  height: 48%;
 }
 
 .property-tile{
   margin-right: 10pt;
   background-color: white;
   display: inline-block;
-  height: 200pt;
+  height: 70%;
   width: 180pt;
 }
 
@@ -25,12 +26,16 @@
 
 .property-image{
   width: 100%;
+}
 
+.property-details{
+  display: inline-block;
 }
 
 h4{
   margin: 0;
   white-space: initial;
+  font-size: 1em;
   /* width: 100%; */
 }
 

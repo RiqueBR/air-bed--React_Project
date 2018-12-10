@@ -1,4 +1,15 @@
 .info-box{
-  background-color: red;
+  /* background-color: white; */
   height: 100%;
+  padding-top: 5%;
+}
+
+.location-image {
+  position: absolute;
+  left: 0px;
+  top: 0px;
+  z-index: -1;
+  height: 100%;
+  width: auto;
+  clip: auto;
 }
