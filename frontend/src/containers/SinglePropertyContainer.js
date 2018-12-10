@@ -1,5 +1,6 @@
 import React from 'react';
 import Request from '../helpers/Request.js';
+import PropertyDetails from '../components/display/property/PropertyDetails';
 
 class SinglePropertyContainer extends React.Component {
   constructor(props){
@@ -24,7 +25,7 @@ request.get(url).then(data => {
 
     return(
       <div>
-        <h1>{this.state.property.name}</h1>
+        <PropertyDetails data={this.state.property}/>
       </div>
     )
   }
