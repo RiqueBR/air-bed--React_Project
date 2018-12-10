@@ -1,6 +1,7 @@
 html{
   height: 100%;
   margin: 0;
+  overflow: hidden;
 }
 
 h1{
@@ -15,12 +16,14 @@ body {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   height: 100%;
+  overflow: auto;
   margin: 0;
 }
 
 .main{
   height: 100%;
-  background-image: url("https://imgur.com/a/y6uZV3s");
+  /* background-color: black; */
+  /* background-image: url(); */
 }
 code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New",
@@ -29,9 +32,4 @@ code {
 
 #root {
   height: 100%;
-}
-
-.info-box{
-  margin-left: 20%;
-
 }
