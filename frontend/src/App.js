@@ -4,6 +4,7 @@ import './App.css';
 import MainContainer from './containers/Main.js';
 import Navbar from './Navbar';
 import SinglePropertyContainer from './containers/SinglePropertyContainer';
+import HomeContainer from './containers/Home'
 
 
 class App extends Component {
@@ -14,6 +15,7 @@ class App extends Component {
           <React.Fragment>
             <Navbar />
             <Switch>
+            <Route exact path="/" component={HomeContainer} />
             <Route exact path="/properties" component={MainContainer} />
             <Route exact path="/properties/:id" render={(props) => {
               const id = props.match.params.id;
