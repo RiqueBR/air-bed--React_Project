@@ -12,9 +12,9 @@ class SinglePropertyContainer extends React.Component {
 
   componentDidMount() {
     let request = new Request()
-const url = '/api/properties/' + this.props.id
-request.get(url).then(data => {
-  this.setState({
+    const url = '/api/properties/' + this.props.id
+    request.get(url).then(data => {
+    this.setState({
     property: data
   })
 })
@@ -22,7 +22,7 @@ request.get(url).then(data => {
 
   render() {
     if(!this.state.property) return null;
-
+    console.log(this.state.property);
     return(
       <div>
         <PropertyDetails data={this.state.property}/>

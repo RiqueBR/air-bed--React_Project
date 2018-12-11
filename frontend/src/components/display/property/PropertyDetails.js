@@ -1,4 +1,6 @@
 import React from 'react';
+import PropertyBookingForm from './PropertyBookingForm';
+import PropertyHighlights from './PropertyHighlights';
 
 const PropertyDetails = ({data}) => {
   if(!data) return null;
@@ -27,11 +29,33 @@ const PropertyDetails = ({data}) => {
           </div>
 
       </div>
-
+   <div className="center">
       <div className="details-body">
-        <h1>{data.name}</h1>
+        <div className="details-left">
+          <h2 className="type" >{data.type}</h2>
+          <h1 className="property-title">{data.name}</h1>
+          <h4 className="location">{data.location}</h4>
+          <div className="property-specs-container">
+            <div className="detail-inline">
+              <img className="guest-icon" src="../../../../images/guests.png" alt="Logo"/>
+            <h4 className="details-specs-text">{data.maxGuests} guests</h4>
+            </div>
+            <div className="detail-inline">
+            <img className="guest-icon" src="../../../../images/beds.png" alt="Logo"/>
+            <h4 className="details-specs-text"> {data.beds} Beds</h4>
+            </div>
+            <div className="detail-inline">
+            <img className="guest-icon" src="../../../../images/rooms.png" alt="Logo"/>
+            <h4 className="details-specs-text"> {data.rooms} Rooms</h4>
+            </div>
+          </div>
+          <PropertyHighlights />
+          <p>{data.details}</p>
+        </div>
+        <PropertyBookingForm />
       </div>
     </div>
+  </div>
   )
 }
 
