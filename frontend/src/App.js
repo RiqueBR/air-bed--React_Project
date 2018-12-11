@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import {BrowserRouter as Router, Route, Switch} from 'react-router-dom';
 import './App.css';
 import MainContainer from './containers/Main.js';
+import Navbar from './Navbar';
 import SinglePropertyContainer from './containers/SinglePropertyContainer';
 
 
@@ -11,6 +12,7 @@ class App extends Component {
       <div>
         <Router>
           <React.Fragment>
+            <Navbar />
             <Switch>
             <Route exact path="/properties" component={MainContainer} />
             <Route exact path="/properties/:id" render={(props) => {
