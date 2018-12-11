@@ -8,10 +8,14 @@ class SearchFormBox extends Component{
     super(props);
     this.state = {
       data: null,
-      selectedLocation: "New York City"
+      selectedLocation: null,
+      selectedDateRange: null
     }
-    this.filterData = this.filterData.bind(this);
+    this.filterLocationData = this.filterLocationData.bind(this);
     this.findLocations = this.findLocations.bind(this);
+    this.handleLocationChange = this.handleLocationChange.bind(this);
+    this.handleSelectedDateRange = this.handleSelectedDateRange.bind(this);
+    //  this.componentDidUpdate = this.componentDidUpdate.bind(this);
   }
 
   componentDidMount() {
@@ -21,6 +25,8 @@ class SearchFormBox extends Component{
         data: data
       })
     })
+
+
   }
 
   findLocations(){
@@ -33,7 +39,7 @@ class SearchFormBox extends Component{
     return locations
   }
 
-  filterData(){
+  filterLocationData(){
     const newLocations = this.findLocations();
 
     const filteredData = newLocations.filter((location, pos, self) => {
@@ -43,6 +49,24 @@ class SearchFormBox extends Component{
     return filteredData
   }
 
+  handleLocationChange(booking){
+
+    console.log(booking.location)
+    if(!booking) return null;
+    this.setState({selectedLocation: booking.location})
+  }
+
+  handleSelectedDateRange(booking){
+    if(!booking) return null;
+    this.setState({selectedDateRange: booking.dateRange})
+  }
+
+  // componentDidUpdate(prevState){
+  //   // if(!booking) return null;
+  //   // this.setState({selectedDateRange: booking.dateRange})
+  //   console.log(this.state.selectedDateRange)
+  // }
+
   render(){
     if(!this.state.data) return null;
 
@@ -50,7 +74,10 @@ class SearchFormBox extends Component{
       <div>
       <h2>title</h2>
       <p>paragraph</p>
-      <SearchForm data={this.filterData()}/>
+      <SearchForm filteredData={this.filterLocationData()}
+      fullData={this.state.data}
+      handleLocationChange={this.handleLocationChange}
+      handleSelectedDateRange={this.handleSelectedDateRange}/>
       </div>
     )
   }
