@@ -48,20 +48,18 @@ const SearchForm = (props) => {
 
       if(!prop) return null;
 
-      return prop.users.map(user => {
+      for (let user of prop.users) {
         console.log(user.endDate.slice(0,10), user.endDate.slice(0,10));
         const sd = moment(user.startDate.slice(0,10), 'YYYY-MM-DD');
         const ed = moment(user.endDate.slice(0,10), 'YYYY-MM-DD');
         const rangeObject = moment.range(sd, ed)
 
         return rangeObject;
-      })
+      }
       // moment.range(prop.users.startDate, prop.users.endDate)
     })
 
-    rangeList.forEach((user)=>{
-      return inputRange.overlaps(user[0])
-    })
+
 
     console.log(filteredBookings)
     console.log(rangeList)
