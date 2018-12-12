@@ -9,10 +9,19 @@ class SearchFormBox extends Component{
     super(props);
     this.state = {
       data: null,
-      selectedLocation: "New York City"
+      selectedLocation: null,
+      selectedDateRange: null
     }
+<<<<<<< HEAD
     // this.filterData = this.filterData.bind(this);
     // this.findLocations = this.findLocations.bind(this);
+=======
+    this.filterLocationData = this.filterLocationData.bind(this);
+    this.findLocations = this.findLocations.bind(this);
+    this.handleLocationChange = this.handleLocationChange.bind(this);
+    this.handleSelectedDateRange = this.handleSelectedDateRange.bind(this);
+
+>>>>>>> 755b8671b987cb9392282ef3d0dab633ab388446
   }
 
   componentDidMount() {
@@ -22,8 +31,11 @@ class SearchFormBox extends Component{
         data: data
       })
     })
+
+
   }
 
+<<<<<<< HEAD
   // findLocations(){
   //   if(!this.state.data._embedded.properties) return null;
   //
@@ -43,16 +55,66 @@ class SearchFormBox extends Component{
   //   // console.log(filteredData);
   //   return filteredData
   // }
+=======
+  findLocations(){
+    if(!this.state.data._embedded.properties) return null;
+
+    const locations = this.state.data._embedded.properties.map((location) => {
+      return location.location
+    })
+
+    return locations
+  }
+
+  filterLocationData(){
+    const newLocations = this.findLocations();
+
+    const filteredData = newLocations.filter((location, pos, self) => {
+      return self.indexOf(location) === pos;
+    })
+    // console.log(filteredData);
+    return filteredData
+  }
+>>>>>>> 755b8671b987cb9392282ef3d0dab633ab388446
+
+  handleLocationChange(booking){
+
+    console.log(booking.location)
+    if(!booking) return null;
+    this.setState({selectedLocation: booking.location})
+  }
+
+  handleSelectedDateRange(booking){
+    if(!booking) return null;
+    this.setState({selectedDateRange: booking.dateRange})
+  }
+
+  // componentDidUpdate(prevState){
+  //   // if(!booking) return null;
+  //   // this.setState({selectedDateRange: booking.dateRange})
+  //   console.log(this.state.selectedDateRange)
+  // }
 
   render(){
     if(!this.props) return null;
     console.log(this.props);
 
     return (
+<<<<<<< HEAD
       <div className="search">
         <div className="search-header-container">
           <SearchForm handleSubmit={this.props.handleSubmit} />
         </div>
+=======
+      <div>
+      <h2>title</h2>
+      <p>paragraph</p>
+      <SearchForm filteredData={this.filterLocationData()}
+      func={this.props.func}
+      fullData={this.state.data}
+      handleLocationChange={this.handleLocationChange}
+      handleSelectedDateRange={this.handleSelectedDateRange}/>
+>>>>>>> 755b8671b987cb9392282ef3d0dab633ab388446
       </div>
     )
   }
