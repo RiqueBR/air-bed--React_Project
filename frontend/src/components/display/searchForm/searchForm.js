@@ -1,6 +1,11 @@
 import React, {Component} from 'react';
 import Moment from 'moment';
 import {extendMoment} from 'moment-range';
+import { Link } from 'react-router-dom';
+
+
+
+
 
 const SearchForm = (props) => {
 
@@ -81,7 +86,12 @@ const SearchForm = (props) => {
     console.log(noOverlapList)
 
     const displayList = noOverlapList.filter(prop => prop !== null)
-    console.log(displayList)
+
+    props.func(displayList)
+
+
+
+
   }
 
   const locations = props.filteredData.map((location, index) =>{

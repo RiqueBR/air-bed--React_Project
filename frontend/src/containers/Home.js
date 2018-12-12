@@ -16,13 +16,14 @@ class HomeContainer extends React.Component {
 
   render() {
     return (
+
       <div>
-      <SearchFormBox />
+      <SearchFormBox func={this.props.func}/>
 
       </div>
     )
 
-    
+
   }
 }
 

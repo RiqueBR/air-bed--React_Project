@@ -15,7 +15,7 @@ class SearchFormBox extends Component{
     this.findLocations = this.findLocations.bind(this);
     this.handleLocationChange = this.handleLocationChange.bind(this);
     this.handleSelectedDateRange = this.handleSelectedDateRange.bind(this);
-    //  this.componentDidUpdate = this.componentDidUpdate.bind(this);
+
   }
 
   componentDidMount() {
@@ -75,6 +75,7 @@ class SearchFormBox extends Component{
       <h2>title</h2>
       <p>paragraph</p>
       <SearchForm filteredData={this.filterLocationData()}
+      func={this.props.func}
       fullData={this.state.data}
       handleLocationChange={this.handleLocationChange}
       handleSelectedDateRange={this.handleSelectedDateRange}/>
