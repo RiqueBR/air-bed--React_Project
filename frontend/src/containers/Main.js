@@ -14,29 +14,29 @@ class Main extends React.Component {
 
   componentDidMount() {
     let request = new Request()
-request.get('/api/properties').then(data => {
-  this.setState({data: data}
- )
-  })
+    request.get('/api/properties').then(data => {
+      this.setState({data: data}
+      )
+    })
 
-  let request2 = new Request()
-request2.get('/api/experiences').then(data => {
-this.setState({experiences: data}
-)
-})
-}
+    let request2 = new Request()
+    request2.get('/api/experiences').then(data => {
+      this.setState({experiences: data}
+      )
+    })
+  }
 
   render() {
     if(!this.props) return null;
     console.log(this.props);
     if(!this.state.data){
-  return(
-    <div className = "centered">
-        <div className = "blob-1"></div>
-        <div className = "blob-2"></div>
-    </div>
-  )
-}
+      return(
+        <div className = "centered">
+          <div className = "blob-1"></div>
+          <div className = "blob-2"></div>
+        </div>
+      )
+    }
     console.log(this.state.data);
     return(
       <div className="main">
@@ -46,9 +46,10 @@ this.setState({experiences: data}
         </div>
         <InfoBox data={this.state.data} experience={this.state.experiences}/>
       </div>
-    )
+)
+      }
 
-  }
-}
 
-export default Main;
+    }
+
+    export default Main;

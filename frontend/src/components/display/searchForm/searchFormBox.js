@@ -1,7 +1,8 @@
+
+import './Search.css'
 import React, {Component} from 'react'
-import SearchForm from './SearchForm'
+import SearchForm from './searchForm'
 import Request from '../../../helpers/Request';
-import './Search.css';
 
 class SearchFormBox extends Component{
 
@@ -30,27 +31,6 @@ class SearchFormBox extends Component{
 
   }
 
-<<<<<<< HEAD
-  // findLocations(){
-  //   if(!this.state.data._embedded.properties) return null;
-  //
-  //   const locations = this.state.data._embedded.properties.map((location) => {
-  //     return location.location
-  //   })
-  //
-  //   return locations
-  // }
-
-  // filterData(){
-  //   const newLocations = this.findLocations();
-  //
-  //   const filteredData = newLocations.filter((location, pos, self) => {
-  //     return self.indexOf(location) === pos;
-  //   })
-  //   // console.log(filteredData);
-  //   return filteredData
-  // }
-=======
   findLocations(){
     if(!this.state.data._embedded.properties) return null;
 
@@ -70,7 +50,44 @@ class SearchFormBox extends Component{
     // console.log(filteredData);
     return filteredData
   }
->>>>>>> 755b8671b987cb9392282ef3d0dab633ab388446
+
+  handleLocationChange(booking){
+
+    console.log(booking.location)
+    if(!booking) return null;
+    this.setState({selectedLocation: booking.location})
+  }
+
+  handleSelectedDateRange(booking){
+    if(!booking) return null;
+    this.setState({selectedDateRange: booking.dateRange})
+  }
+
+  // componentDidUpdate(prevState){
+  //   // if(!booking) return null;
+  //   // this.setState({selectedDateRange: booking.dateRange})
+  //   console.log(this.state.selectedDateRange)
+  // }
+
+  findLocations(){
+    if(!this.state.data._embedded.properties) return null;
+
+    const locations = this.state.data._embedded.properties.map((location) => {
+      return location.location
+    })
+
+    return locations
+  }
+
+  filterLocationData(){
+    const newLocations = this.findLocations();
+
+    const filteredData = newLocations.filter((location, pos, self) => {
+      return self.indexOf(location) === pos;
+    })
+    // console.log(filteredData);
+    return filteredData
+  }
 
   handleLocationChange(booking){
 
@@ -91,28 +108,16 @@ class SearchFormBox extends Component{
   // }
 
   render(){
-    if(!this.props) return null;
-    console.log(this.props);
+    if(!this.state.data) return null;
 
     return (
-<<<<<<< HEAD
       <div className="search">
         <div className="search-header-container">
-          <SearchForm handleSubmit={this.props.handleSubmit} />
+          <SearchForm data={this.state.data._embedded.properties} handleSubmit={this.props.handleSubmit} />
         </div>
-=======
-      <div>
-      <h2>title</h2>
-      <p>paragraph</p>
-      <SearchForm filteredData={this.filterLocationData()}
-      func={this.props.func}
-      fullData={this.state.data}
-      handleLocationChange={this.handleLocationChange}
-      handleSelectedDateRange={this.handleSelectedDateRange}/>
->>>>>>> 755b8671b987cb9392282ef3d0dab633ab388446
       </div>
     )
   }
 }
 
-export default SearchFormBox;
+export default SearchFormBox

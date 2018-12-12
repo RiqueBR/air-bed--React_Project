@@ -1,5 +1,5 @@
 import React from 'react';
-import SearchFormBox from '../components/display/searchForm/SearchFormBox'
+import SearchFormBox from '../components/display/searchForm/searchFormBox'
 
 class HomeContainer extends React.Component {
 
@@ -14,10 +14,6 @@ class HomeContainer extends React.Component {
     if(!this.props) return null;
     console.log(this.props);
     return (
-
-      <div>
-      <SearchFormBox func={this.props.func}/>
-
       <div className="search-body">
         <SearchFormBox handleSubmit={this.props.handleSubmit}/>
         <div className='footer'>

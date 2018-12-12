@@ -1,28 +1,16 @@
 import React, {Component} from 'react';
-<<<<<<< HEAD
+import Moment from 'moment';
+import {extendMoment} from 'moment-range';
 import { Link } from 'react-router-dom';
+
 
 const SearchForm = (props) => {
 
   if(!props) return null;
   console.log(props);
 
-
-=======
-import Moment from 'moment';
-import {extendMoment} from 'moment-range';
-import { Link } from 'react-router-dom';
-
-
-
-
-
-const SearchForm = (props) => {
-
-  if(!props) return null;
-
   const moment = extendMoment(Moment);
->>>>>>> 755b8671b987cb9392282ef3d0dab633ab388446
+
 
   function handleSubmit(event){
     event.preventDefault();
@@ -65,19 +53,6 @@ const SearchForm = (props) => {
         const ed = moment(user.endDate.slice(0,10), 'YYYY-MM-DD');
         const rangeObject = moment.range(sd, ed)
 
-<<<<<<< HEAD
-  // const locations = data.map((location, index) =>{
-  //   return <option key={index} value={location}>{location}</option>
-  // })
-
-  return(
-    <div className="search-form-container">
-      <h2 className="search-header">Find homes all over the world on whereBnB</h2>
-      <p className="search-sub-header">Discover entire homes and private rooms perfect for any trip.</p>
-      <form onSubmit={props.handleSubmit}>
-        <select className="select-box" >
-
-=======
         return rangeObject;
       })
     })
@@ -117,24 +92,25 @@ const SearchForm = (props) => {
 
   }
 
-  const locations = props.filteredData.map((location, index) =>{
-    return <option key={index} value={location}>{location}</option>
+  const locations = props.data.map((location, index) =>{
+    return <option key={index} value={location.location}>{location.location}</option>
   })
 
   return(
-
-    <div>
-      <form onSubmit={handleSubmit}>
-        <select name="location">
+    <div className="search-form-container">
+      <h2 className="search-header">Find homes all over the world on whereBnB</h2>
+      <p className="search-sub-header">Discover entire homes and private rooms perfect for any trip.</p>
+      <form onSubmit={props.handleSubmit}>
+        <select className="select-box" >
           {locations}
->>>>>>> 755b8671b987cb9392282ef3d0dab633ab388446
+
         </select>
         <div className="search-date-pickers-container">
           <input className="check-in-picker" type="date" placeholder="Check-in" name="checkIn" />
           <img className="date-arrow" src="/images/DateArrow.png" alt="Logo"/>
           <input className="check-out-picker" type="date" placeholder="Check-out" name="checkOut" />
         </div>
-        <button type="submit">Search</button>
+        <button className="search-form-btn" type="submit">Search</button>
       </form>
     </div>
   )

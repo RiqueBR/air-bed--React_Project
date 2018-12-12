@@ -44,6 +44,19 @@ handleSubmit(data){
       </div>
 
     );
+    this.state ={
+      arrayList: null
+    }
+    this.passListToApp = this.passListToApp.bind(this);
+  }
+
+  passListToApp(listOfProps){
+    this.setState({arrayList: listOfProps}, () => {
+      console.log(this.state.arrayList);
+      // window.location = "/properties"
+      console.log(this.state.arrayList);
+
+    })
   }
 
 
@@ -71,11 +84,7 @@ render() {
 
     <Route exact path="/properties"
     render={() => {
-      if(!this.state.arrayList) return null;
-      console.log(this.state.arrayList);
-      return <MainContainer data={this.state.arrayList}/>
-
-
+      return <MainContainer />
     }}
     >
 

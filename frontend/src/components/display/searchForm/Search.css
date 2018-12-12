@@ -111,3 +111,13 @@ select:disabled::-ms-expand {
 .footer-image{
   width: 100%;
 }
+
+.search-form-btn{
+  width: 90%;
+  margin-left: 5%;
+  background-color: #FA3C6D;
+  border: 0;
+  color: white;
+  margin-top: 6pt;
+  height: 22pt;
+}
