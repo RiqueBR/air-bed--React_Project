@@ -14,12 +14,9 @@ class HomeContainer extends React.Component {
     if(!this.props) return null;
     console.log(this.props);
     return (
-<<<<<<< HEAD
-=======
 
       <div>
       <SearchFormBox func={this.props.func}/>
->>>>>>> 755b8671b987cb9392282ef3d0dab633ab388446
 
       <div className="search-body">
         <SearchFormBox handleSubmit={this.props.handleSubmit}/>

@@ -12,16 +12,11 @@ class SearchFormBox extends Component{
       selectedLocation: null,
       selectedDateRange: null
     }
-<<<<<<< HEAD
-    // this.filterData = this.filterData.bind(this);
-    // this.findLocations = this.findLocations.bind(this);
-=======
     this.filterLocationData = this.filterLocationData.bind(this);
     this.findLocations = this.findLocations.bind(this);
     this.handleLocationChange = this.handleLocationChange.bind(this);
     this.handleSelectedDateRange = this.handleSelectedDateRange.bind(this);
 
->>>>>>> 755b8671b987cb9392282ef3d0dab633ab388446
   }
 
   componentDidMount() {
