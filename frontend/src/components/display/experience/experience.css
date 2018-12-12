@@ -7,15 +7,37 @@
   margin-right: 10pt;
   background-color: white;
   display: inline-block;
-  height: 200pt;
-  width: 180pt;
+  height: 250pt;
+  width: 220pt;
 }
 
-.place-holder-img {
+.item-desc{
+  margin-top: 8pt;
   width: 100%;
-  height: 100pt;
-  background-color: yellow;
+  white-space: initial;
+  height: 50pt;
+  font-size: 10pt;
+color: #484848;
+font-weight: 400;
+display: inline-block;
 }
+
+.from{
+  display: inline-block;
+  font-size: 10pt;
+  font-weight: 300;
+  color: #484848;
+  margin-right: 2pt;
+}
+
+.experience-title{
+  margin-top: 2pt;
+  color: #4D4B4B;
+  font-weight: 600;
+  max-width: 100%;
+  font-size: 1.2em;
+}
+
 
 .experience-img{
   width: 100%

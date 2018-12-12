@@ -1,17 +1,23 @@
 import React from 'react';
 
-const ExperienceTile = ({url, title, description, price}) => {
+const ExperienceTile = ({data}) => {
+  if(!data) return null;
+  console.log(data);
   return(
-    <div className="experience-tile">
+    <div className="property-tile">
       <div className="place-holder-img">
-        <img src = {url} alt="experience-img"></img>
+        <img className="property-image" src = {data.image} alt="experience-img"></img>
       </div>
-      <div className="experience-info-container">
-        <h4 className="item-title">{title}</h4>
-        <h5 className="item-desc">{description}</h5>
+
+      <div className="property-info-container">
+        <div className="center-details">
+        <h5 className="tile-view-type">{data.category}</h5>
+        <h4 className="experience-title">{data.title}</h4>
+        <h5 className="item-desc">{data.description}</h5>
         <div>
-          <h4 className="experience-price">{price}</h4>
-          <button className="view-experience-btn" value="submit">View</button>
+          <h4 className="from">from</h4>
+          <h4 className="property-price">£{data.price}</h4>
+        </div>
         </div>
       </div>
     </div>

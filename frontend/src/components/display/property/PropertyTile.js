@@ -11,20 +11,31 @@ const PropertyTile = ({data}) => {
         <img className="property-image" alt="property"src={data.images[0]}></img>
       </div>
       <div className="property-info-container">
-        <h5>{data.type}</h5>
-        <Link to={'/properties/' + data.id}>
+        <div className="center-details">
+        <h5 className="tile-view-type">{data.type}</h5>
+        <div className="link-container">
+        <Link className="property-link" to={'/properties/' + data.id}>
           {data.name}
         </Link>
-        <h4></h4>
-        <div className="property-details">
-          <p className="property-details">{data.guests} Guests,</p>
-          <p className="property-details">{data.bedrooms} Bedrooms,</p>
-          <p className="property-details">{data.beds} Beds</p>
         </div>
-        <div>
-          <h4 className="property-price">{data.price}</h4>
-          <button className="view-property-btn" value="submit">View</button>
+        <div className="rating-container-tile">
+          <img className="star-icon-tile" src="/images/Star.png" alt="Logo"/>
+          <h4 className="rating-text-tile">{data.rating}</h4>
         </div>
+
+        <div className="property-details-container-tile">
+          <p className="property-details">{data.maxGuests} guests ・</p>
+          <p className="property-details">{data.rooms} bedrooms ・</p>
+          <p className="property-details">{data.beds} beds</p>
+        </div>
+        <div className="its-late-and-i-cant-think-of-a-classname">
+          <h4 className="property-price">£{data.price}</h4>
+          <h4 className="ppn">per night</h4>
+          <Link className="property-link" to={'/properties/' + data.id}>
+          <img className="next-icon" src="../../../../images/NextBtn.png" alt="Logo"/>
+          </Link>
+        </div>
+      </div>
       </div>
     </div>
   )

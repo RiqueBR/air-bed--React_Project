@@ -8,6 +8,17 @@ import HomeContainer from './containers/Home'
 
 
 class App extends Component {
+
+  constructor(props){
+    super(props)
+    this.handleSubmit = this.handleSubmit.bind(this)
+  }
+
+
+handleSubmit(data){
+  console.log("submit handled");
+}
+
   render() {
     return (
       <div>
@@ -15,8 +26,12 @@ class App extends Component {
           <React.Fragment>
             <Navbar />
             <Switch>
-            <Route exact path="/" component={HomeContainer} />
-            <Route exact path="/properties" component={MainContainer} />
+            <Route exact path="/" render={() => {
+              return <HomeContainer handleSubmit={this.handleSubmit}/>
+            }}/>
+            <Route exact path="/properties" render={(props) => {
+              return <MainContainer  data={props}/>
+            }} />
             <Route exact path="/properties/:id" render={(props) => {
               const id = props.match.params.id;
               return <SinglePropertyContainer id={id} />;

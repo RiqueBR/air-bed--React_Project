@@ -1,9 +1,14 @@
 import React from 'react';
 import PropertyBookingForm from './PropertyBookingForm';
 import PropertyHighlights from './PropertyHighlights';
+import PropertyMap from './PropertyMap';
 
 const PropertyDetails = ({data}) => {
+
+
   if(!data) return null;
+  const center = {lat: data.lat, lng: data.lon};
+  console.log(center);
   console.log(data);
   return(
     <div className="property-details-body">
@@ -45,14 +50,17 @@ const PropertyDetails = ({data}) => {
             <h4 className="details-specs-text"> {data.beds} Beds</h4>
             </div>
             <div className="detail-inline">
-            <img className="guest-icon" src="../../../../images/rooms.png" alt="Logo"/>
+            <img className="room-icon" src="../../../../images/rooms.png" alt="Logo"/>
             <h4 className="details-specs-text"> {data.rooms} Rooms</h4>
             </div>
           </div>
           <PropertyHighlights />
-          <p>{data.details}</p>
+          <p className="details">{data.details}</p>
         </div>
-        <PropertyBookingForm />
+        <div className="details-right">
+          <PropertyBookingForm data={data}/>
+          <PropertyMap lat={data.lat} lon={data.lon} center={center}/>
+        </div>
       </div>
     </div>
   </div>

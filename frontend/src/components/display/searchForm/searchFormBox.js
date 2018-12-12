@@ -1,6 +1,7 @@
 import React, {Component} from 'react'
 import SearchForm from './SearchForm'
 import Request from '../../../helpers/Request';
+import './Search.css';
 
 class SearchFormBox extends Component{
 
@@ -10,8 +11,8 @@ class SearchFormBox extends Component{
       data: null,
       selectedLocation: "New York City"
     }
-    this.filterData = this.filterData.bind(this);
-    this.findLocations = this.findLocations.bind(this);
+    // this.filterData = this.filterData.bind(this);
+    // this.findLocations = this.findLocations.bind(this);
   }
 
   componentDidMount() {
@@ -23,34 +24,35 @@ class SearchFormBox extends Component{
     })
   }
 
-  findLocations(){
-    if(!this.state.data._embedded.properties) return null;
+  // findLocations(){
+  //   if(!this.state.data._embedded.properties) return null;
+  //
+  //   const locations = this.state.data._embedded.properties.map((location) => {
+  //     return location.location
+  //   })
+  //
+  //   return locations
+  // }
 
-    const locations = this.state.data._embedded.properties.map((location) => {
-      return location.location
-    })
-
-    return locations
-  }
-
-  filterData(){
-    const newLocations = this.findLocations();
-
-    const filteredData = newLocations.filter((location, pos, self) => {
-      return self.indexOf(location) === pos;
-    })
-    // console.log(filteredData);
-    return filteredData
-  }
+  // filterData(){
+  //   const newLocations = this.findLocations();
+  //
+  //   const filteredData = newLocations.filter((location, pos, self) => {
+  //     return self.indexOf(location) === pos;
+  //   })
+  //   // console.log(filteredData);
+  //   return filteredData
+  // }
 
   render(){
-    if(!this.state.data) return null;
+    if(!this.props) return null;
+    console.log(this.props);
 
     return (
-      <div>
-      <h2>title</h2>
-      <p>paragraph</p>
-      <SearchForm data={this.filterData()}/>
+      <div className="search">
+        <div className="search-header-container">
+          <SearchForm handleSubmit={this.props.handleSubmit} />
+        </div>
       </div>
     )
   }

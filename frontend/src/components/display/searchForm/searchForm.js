@@ -1,10 +1,13 @@
 import React, {Component} from 'react';
+import { Link } from 'react-router-dom';
 
-const SearchForm = ({data}) => {
+const SearchForm = (props) => {
 
-  if(!data) return null;
+  if(!props) return null;
+  console.log(props);
 
-  // debugger;
+
+
   function handleSubmit(event){
     event.preventDefault();
     const booking = {
@@ -19,18 +22,23 @@ const SearchForm = ({data}) => {
 
 
 
-  const locations = data.map((location, index) =>{
-    return <option key={index} value={location}>{location}</option>
-  })
+  // const locations = data.map((location, index) =>{
+  //   return <option key={index} value={location}>{location}</option>
+  // })
 
   return(
-    <div>
-      <form onSubmit={handleSubmit}>
-        <select>
-        {locations}
+    <div className="search-form-container">
+      <h2 className="search-header">Find homes all over the world on whereBnB</h2>
+      <p className="search-sub-header">Discover entire homes and private rooms perfect for any trip.</p>
+      <form onSubmit={props.handleSubmit}>
+        <select className="select-box" >
+
         </select>
-        <input type="date" placeholder="Check-in" name="checkIn"/>
-        <input type="date" placeholder="Check-out" name="checkOut" />
+        <div className="search-date-pickers-container">
+          <input className="check-in-picker" type="date" placeholder="Check-in" name="checkIn" />
+          <img className="date-arrow" src="/images/DateArrow.png" alt="Logo"/>
+          <input className="check-out-picker" type="date" placeholder="Check-out" name="checkOut" />
+        </div>
         <button type="submit">Search</button>
       </form>
     </div>

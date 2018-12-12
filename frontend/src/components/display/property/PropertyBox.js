@@ -4,9 +4,10 @@ import PropertyList from './PropertyList';
 
 const PropertyBox = ({data}) => {
   if(!data) return null;
+  console.log(data);
   return(
     <div className="property-box">
-      <h1>Homes in Location</h1>
+      <h1 className="property-list-title">Homes in {data[0].location}</h1>
       <PropertyList data={data}/>
     </div>
   )
