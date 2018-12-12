@@ -34,8 +34,6 @@ const SearchForm = (props) => {
     props.handleSelectedDateRange(booking)
   }
 
-
-
   function checkOverlap(inputRange){
 
     // grab existing user bookings with start and end dates to form moment.range objects
@@ -67,40 +65,24 @@ const SearchForm = (props) => {
     const noOverlapList = rangeListsPerProp.map((perRange, index) => {
       if (perRange.length === 0) {
         return filteredBookings[index];
-      }
-
-      return perRange.forEach(range => {
-        if (range.overlaps(inputRange)){
-          console.log(range.overlaps(inputRange))
-          return null;
-        }else{
-          debugger;
+      }else{
+        for(let range of perRange) {
+          if (range.overlaps(inputRange)){
+              // return null if there is an overlap
+            console.log(range.overlaps(inputRange))
+            return null;
+          }
+          // else return the property to the list noOverlapList
           return filteredBookings[index]
         }
-      })
+      }
     })
 
     console.log(noOverlapList)
 
-    // for(let thisProp = 0; thisProp<rangeListsPerProp.length; thisProp++){
-    //   if (thisProp = []) {
-    //     noOverlapList.push(filteredBookings[thisProp])
-    //   }else{
-    //     for (let thisRange = 0; thisRange<thisProp.length; thisProp++){
-    //       if (thisRange.overlap(inputRange)) return null;
-    //       noOverlapList.push(filteredBookings[thisProp])
-    //     }
-    //
-    //   }
-    //
-    // }
-
+    const displayList = noOverlapList.filter(prop => prop !== null)
+    console.log(displayList)
   }
-
-
-  // return true if there is an overlap
-
-  // else return false and send the range through to DisplayPage as a props
 
   const locations = props.filteredData.map((location, index) =>{
     return <option key={index} value={location}>{location}</option>
