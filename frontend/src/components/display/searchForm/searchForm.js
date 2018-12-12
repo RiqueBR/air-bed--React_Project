@@ -30,21 +30,19 @@ const SearchForm = (props) => {
     console.log(booking.dateRange);
     // console.log(booking.location)
 
-   props.handleLocationChange(booking)
-   props.handleSelectedDateRange(booking)
+    props.handleLocationChange(booking)
+    props.handleSelectedDateRange(booking)
   }
 
-  const locations = props.filteredData.map((location, index) =>{
-    return <option key={index} value={location}>{location}</option>
-  })
+
 
   function checkOverlap(inputRange){
-    console.log(props.fullData._embedded.properties)
-    // grab existing bookings list with ranges
+
+    // grab existing user bookings with start and end dates to form moment.range objects
 
     const filteredBookings = props.fullData._embedded.properties
 
-    const rangeList = filteredBookings.map(prop =>{
+    const rangeListsPerProp = filteredBookings.map(prop =>{
 
       if(!prop) return null;
 
@@ -56,49 +54,64 @@ const SearchForm = (props) => {
 
         return rangeObject;
       })
-      // moment.range(prop.users.startDate, prop.users.endDate)
     })
 
-
-
     console.log(filteredBookings)
-    console.log(rangeList)
-    console.log(props)
+    console.log(rangeListsPerProp)
+
+    // compare each booking range within the rangeList with inputRange
+
+    console.log(inputRange)
 
 
-    // const startDate = filteredBookings[0].users[0].startDate
-    // const endDate = filteredBookings[0].users[0].endDate
+    const noOverlapList = rangeListsPerProp.map((perRange, index) => {
+      if (perRange.length === 0) {
+        return filteredBookings[index];
+      }
+
+      return perRange.forEach(range => {
+        if (range.overlaps(inputRange)){
+          console.log(range.overlaps(inputRange))
+          return null;
+        }else{
+          debugger;
+          return filteredBookings[index]
+        }
+      })
+    })
+
+    console.log(noOverlapList)
+
+    // for(let thisProp = 0; thisProp<rangeListsPerProp.length; thisProp++){
+    //   if (thisProp = []) {
+    //     noOverlapList.push(filteredBookings[thisProp])
+    //   }else{
+    //     for (let thisRange = 0; thisRange<thisProp.length; thisProp++){
+    //       if (thisRange.overlap(inputRange)) return null;
+    //       noOverlapList.push(filteredBookings[thisProp])
+    //     }
     //
-    // const propRange = moment.range(startDate, endDate)
+    //   }
     //
-    // const result = inputRange.overlaps(propRange)
-
-
-
-  // const newRangeList = rangeList.forEach((range) => {
-  //     inputRange.overlaps(range)
-  //
-  //   })
-
+    // }
 
   }
 
 
+  // return true if there is an overlap
 
+  // else return false and send the range through to DisplayPage as a props
 
-    // compare each booking range within the booking list with inputRange
-
-    // return true if there is an overlap
-
-    // else return false and send the range through to DisplayPage as a props
-
+  const locations = props.filteredData.map((location, index) =>{
+    return <option key={index} value={location}>{location}</option>
+  })
 
   return(
 
     <div>
       <form onSubmit={handleSubmit}>
         <select name="location">
-        {locations}
+          {locations}
         </select>
         <input type="date" placeholder="Check-in" name="checkIn"/>
         <input type="date" placeholder="Check-out" name="checkOut" />
