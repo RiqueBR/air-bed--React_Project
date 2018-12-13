@@ -11,7 +11,6 @@ const SearchForm = (props) => {
 
   const moment = extendMoment(Moment);
 
-
   function handleSubmit(event){
     event.preventDefault();
     const booking = {
@@ -41,7 +40,7 @@ const SearchForm = (props) => {
 
     // grab existing user bookings with start and end dates to form moment.range objects
 
-    const filteredBookings = props.fullData._embedded.properties
+    const filteredBookings = props.fullData
 
     const rangeListsPerProp = filteredBookings.map(prop =>{
 
@@ -85,23 +84,25 @@ const SearchForm = (props) => {
 
     const displayList = noOverlapList.filter(prop => prop !== null)
 
-    props.func(displayList)
-
-
+    // console.log(props.passToApp);
+    // debugger;
+    props.passToApp(displayList)
 
 
   }
 
-  const locations = props.data.map((location, index) =>{
-    return <option key={index} value={location.location}>{location.location}</option>
+  console.log(props.filteredData)
+
+  const locations = props.filteredData.map((location, index) =>{
+    return <option key={index} value={location}>{location}</option>
   })
 
   return(
     <div className="search-form-container">
       <h2 className="search-header">Find homes all over the world on whereBnB</h2>
       <p className="search-sub-header">Discover entire homes and private rooms perfect for any trip.</p>
-      <form onSubmit={props.handleSubmit}>
-        <select className="select-box" >
+      <form onSubmit={handleSubmit}>
+        <select className="select-box" name="location">
           {locations}
 
         </select>
