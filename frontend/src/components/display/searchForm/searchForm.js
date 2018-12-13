@@ -1,7 +1,7 @@
 import React, {Component} from 'react';
 import Moment from 'moment';
 import {extendMoment} from 'moment-range';
-import { Link } from 'react-router-dom';
+import { Link, withRouter } from 'react-router-dom';
 
 
 const SearchForm = (props) => {
@@ -87,7 +87,7 @@ const SearchForm = (props) => {
     // console.log(props.passToApp);
     // debugger;
     props.passToApp(displayList)
-
+    props.history.push("/properties");
 
   }
 
@@ -118,4 +118,4 @@ const SearchForm = (props) => {
 
 }
 
-export default SearchForm;
+export default withRouter(SearchForm);

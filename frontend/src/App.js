@@ -12,8 +12,22 @@ class App extends Component {
   constructor(props){
     super(props);
     this.passListToApp = this.passListToApp.bind(this);
+
+    this.state = {
+      arrayList: null
+    }
+
   }
 
+
+
+  componentDidUpdate(prevState){
+    if(prevState.arrayList !== this.state.arrayList){
+      // window.location = "/properties"
+      console.log(this.state.arrayList);
+      return
+    }
+  }
 
   render() {
     return (
@@ -25,8 +39,8 @@ class App extends Component {
             <Route exact path="/" render={() => {
                 return <HomeContainer passToApp={this.passListToApp}/>
             }}/>
-            <Route exact path="/properties" render={(props) => {
-                return <MainContainer  data={props}/>
+            <Route exact path="/properties" render={() => {
+                return <MainContainer  data={this.state.arrayList}/>
             }} />
             <Route exact path="/properties/:id" render={(props) => {
                 const id = props.match.params.id;
@@ -40,9 +54,7 @@ class App extends Component {
     </div>
 
   );
-  this.state ={
-    arrayList: null
-  }
+
   this.passListToApp = this.passListToApp.bind(this);
 }
 
@@ -53,15 +65,6 @@ passListToApp(listOfProps){
   })
 }
 
-
-
-
-componentDidUpdate(prevState){
-  if(prevState.arrayList !== this.state.arrayList){
-    window.location = "/properties"
-    console.log(this.state.arrayList);
-  }
-}
 }
 
 export default App;

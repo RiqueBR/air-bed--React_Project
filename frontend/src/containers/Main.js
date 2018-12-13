@@ -13,17 +13,29 @@ class Main extends React.Component {
   }
 
   componentDidMount() {
-    let request = new Request()
-    request.get('/api/properties').then(data => {
-      this.setState({data: data}
-      )
-    })
 
-    let request2 = new Request()
-    request2.get('/api/experiences').then(data => {
-      this.setState({experiences: data}
-      )
-    })
+    console.log(this.props);
+    // this.setState({
+    //     data: this.props.data
+    //   }
+    // )
+
+    // let request = new Request()
+    // request.get('/api/properties').then(data => {
+    //   this.setState({data: data}
+    //   )
+    // })
+
+    // let request2 = new Request()
+    // request2.get('/api/experiences').then(data => {
+    //   this.setState({experiences: data}
+    //   )
+    // })
+  }
+
+  componentDidUpdate(){
+    console.log(this.state);
+
   }
 
   render() {
@@ -44,7 +56,7 @@ class Main extends React.Component {
         <div>
           <h1 className="main-location-title">{this.state.data._embedded.properties[0].location}</h1>
         </div>
-        <InfoBox data={this.state.data} experience={this.state.experiences}/>
+
       </div>
 )
       }

@@ -78,10 +78,11 @@ class SearchFormBox extends Component{
     if(!this.state.data) return null;
 
     return (
-
       <div className="search">
         <div className="search-header-container">
           <SearchForm
+            handleSelectedDateRange={this.handleSelectedDateRange}
+            handleLocationChange={this.handleLocationChange}
             filteredData={this.filterLocationData()}
             fullData={this.state.data._embedded.properties}
             passToApp={this.props.passToApp}
