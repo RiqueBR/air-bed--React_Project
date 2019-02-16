@@ -11,13 +11,13 @@ const ExperienceTile = ({data}) => {
 
       <div className="property-info-container">
         <div className="center-details">
-        <h5 className="tile-view-type">{data.category}</h5>
-        <h4 className="experience-title">{data.title}</h4>
-        <h5 className="item-desc">{data.description}</h5>
-        <div>
-          <h4 className="from">from</h4>
-          <h4 className="property-price">£{data.price}</h4>
-        </div>
+          <h5 className="tile-view-type">{data.category}</h5>
+          <h4 className="experience-title">{data.title}</h4>
+          <h5 className="item-desc">{data.description}</h5>
+          <div>
+            <h4 className="from">from</h4>
+            <h4 className="property-price">£{data.price}</h4>
+          </div>
         </div>
       </div>
     </div>

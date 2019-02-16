@@ -3,7 +3,6 @@ import './experience.css';
 import ExperienceList from './ExperienceList';
 
 const ExperienceBox = ({data}) => {
-
   return(
     <div className="property-box">
       <h1 className="property-list-title">Experiences in {data[0].location}</h1>

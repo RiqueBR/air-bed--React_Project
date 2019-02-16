@@ -14,7 +14,6 @@ const SearchForm = (props) => {
   function handleSubmit(event){
     event.preventDefault();
     const booking = {
-
       "location": event.target.location.value,
       "checkIn": event.target.checkIn.value,
       "checkOut": event.target.checkOut.value,
@@ -70,7 +69,7 @@ const SearchForm = (props) => {
       }else{
         for(let range of perRange) {
           if (range.overlaps(inputRange)){
-              // return null if there is an overlap
+            // return null if there is an overlap
             console.log(range.overlaps(inputRange))
             return null;
           }
@@ -88,33 +87,32 @@ const SearchForm = (props) => {
     // debugger;
     props.passToApp(displayList)
     props.history.push("/properties");
-
   }
 
-  console.log(props.filteredData)
+  console.log(props.filteredLocationOptions)
 
-  const locations = props.filteredData.map((location, index) =>{
+  const locations = props.filteredLocationOptions.map((location, index) => {
     return <option key={index} value={location}>{location}</option>
-  })
+})
 
-  return(
-    <div className="search-form-container">
-      <h2 className="search-header">Find homes all over the world on whereBnB</h2>
-      <p className="search-sub-header">Discover entire homes and private rooms perfect for any trip.</p>
-      <form onSubmit={handleSubmit}>
-        <select className="select-box" name="location">
-          {locations}
+return(
+  <div className="search-form-container">
+    <h2 className="search-header">Find homes all over the world on whereBnB</h2>
+  <p className="search-sub-header">Discover entire homes and private rooms perfect for any trip.</p>
+<form onSubmit={handleSubmit}>
+  <select className="select-box" name="location">
+    {locations}
 
-        </select>
-        <div className="search-date-pickers-container">
-          <input className="check-in-picker" type="date" placeholder="Check-in" name="checkIn" />
-          <img className="date-arrow" src="/images/DateArrow.png" alt="Logo"/>
-          <input className="check-out-picker" type="date" placeholder="Check-out" name="checkOut" />
-        </div>
-        <button className="search-form-btn" type="submit">Search</button>
-      </form>
-    </div>
-  )
+  </select>
+  <div className="search-date-pickers-container">
+    <input className="check-in-picker" type="date" placeholder="Check-in" name="checkIn" />
+  <img className="date-arrow" src="/images/DateArrow.png" alt="Logo"/>
+<input className="check-out-picker" type="date" placeholder="Check-out" name="checkOut" />
+</div>
+<button className="search-form-btn" type="submit">Search</button>
+</form>
+</div>
+)
 
 }
 

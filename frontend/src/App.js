@@ -11,20 +11,19 @@ class App extends Component {
 
   constructor(props){
     super(props);
-    this.passListToApp = this.passListToApp.bind(this);
 
     this.state = {
-      arrayList: null
+      filteredProps: null
     }
+    this.passToApp = this.passToApp.bind(this);
 
   }
 
 
-
   componentDidUpdate(prevState){
-    if(prevState.arrayList !== this.state.arrayList){
+    if(prevState.filteredProps !== this.state.filteredProps){
       // window.location = "/properties"
-      console.log(this.state.arrayList);
+      console.log(this.state.filteredProps);
       return
     }
   }
@@ -37,10 +36,10 @@ class App extends Component {
             <Navbar />
           <Switch>
             <Route exact path="/" render={() => {
-                return <HomeContainer passToApp={this.passListToApp}/>
+                return <HomeContainer passToApp={this.passToApp}/>
             }}/>
             <Route exact path="/properties" render={() => {
-                return <MainContainer  data={this.state.arrayList}/>
+                return <MainContainer  data={this.state.filteredProps}/>
             }} />
             <Route exact path="/properties/:id" render={(props) => {
                 const id = props.match.params.id;
@@ -55,12 +54,12 @@ class App extends Component {
 
   );
 
-  this.passListToApp = this.passListToApp.bind(this);
+
 }
 
-passListToApp(listOfProps){
-  this.setState({arrayList: listOfProps}, () => {
-    console.log(this.state.arrayList);
+passToApp(listOfProps){
+  this.setState({filteredProps: listOfProps}, () => {
+    console.log(this.state.filteredProps);
     // window.location = "/properties"
   })
 }

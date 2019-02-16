@@ -37,6 +37,7 @@ class SearchFormBox extends Component{
   }
 
   findLocations(){
+
     if(!this.state.data._embedded.properties) return null;
 
     const locations = this.state.data._embedded.properties.map((location) => {
@@ -83,7 +84,7 @@ class SearchFormBox extends Component{
           <SearchForm
             handleSelectedDateRange={this.handleSelectedDateRange}
             handleLocationChange={this.handleLocationChange}
-            filteredData={this.filterLocationData()}
+            filteredLocationOptions={this.filterLocationData()}
             fullData={this.state.data._embedded.properties}
             passToApp={this.props.passToApp}
           />
