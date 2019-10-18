@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
 import './App.css';
 import MainContainer from './containers/Main.js';
-import Navbar from './Navbar';
+import Navbar from './components/Navbar';
 import SinglePropertyContainer from './containers/SinglePropertyContainer';
 import HomeContainer from './containers/Home'
 
@@ -11,18 +11,15 @@ class App extends Component {
 
   constructor(props) {
     super(props);
-
     this.state = {
       filteredProps: null
     }
     this.passToApp = this.passToApp.bind(this);
-
   }
 
 
   componentDidUpdate(prevState) {
     if (prevState.filteredProps !== this.state.filteredProps) {
-      console.log(this.state.filteredProps);
       return
     }
   }
@@ -58,7 +55,6 @@ class App extends Component {
 
   passToApp(listOfProps) {
     this.setState({ filteredProps: listOfProps }, () => {
-      console.log(this.state.filteredProps);
     })
   }
 

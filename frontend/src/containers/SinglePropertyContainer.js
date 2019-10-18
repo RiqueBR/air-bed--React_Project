@@ -3,7 +3,7 @@ import Request from '../helpers/Request.js';
 import PropertyDetails from '../components/display/property/PropertyDetails';
 
 class SinglePropertyContainer extends React.Component {
-  constructor(props){
+  constructor(props) {
     super(props)
     this.state = {
       property: null
@@ -14,18 +14,18 @@ class SinglePropertyContainer extends React.Component {
     let request = new Request()
     const url = '/api/properties/' + this.props.id
     request.get(url).then(data => {
-    this.setState({
-    property: data
-  })
-})
+      this.setState({
+        property: data
+      })
+    })
   }
 
   render() {
-    if(!this.state.property) return null;
-    console.log(this.state.property);
-    return(
+    if (!this.state.property) return null;
+
+    return (
       <div>
-        <PropertyDetails data={this.state.property}/>
+        <PropertyDetails data={this.state.property} />
       </div>
     )
   }

@@ -1,18 +1,17 @@
 import React from 'react';
 import PropertyTile from './PropertyTile';
 
-const PropertyTileBox = ({data}) => {
+const PropertyTileBox = ({ data }) => {
 
-if(!data) return null;
-  console.log(data);
+  if (!data) return null;
 
   const properties = data.map((property, index) => {
-    return(
+    return (
       <PropertyTile key={index} data={property} />
     )
   })
 
-  return(
+  return (
     <div className="property-list">
       {properties}
     </div>

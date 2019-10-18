@@ -5,12 +5,12 @@ import ExperienceBox from './experience/ExperienceBox'
 
 
 const InfoBox = (props) => {
-  if(!props) return null;
-  console.log(props);
-  return(
+  if (!props) return null;
+
+  return (
     <div className="info-box">
-      <PropertyBox data={props.data._embedded.properties}/>
-      <ExperienceBox data={props.experience._embedded.experiences}/>
+      <PropertyBox data={props.data._embedded.properties} />
+      <ExperienceBox data={props.experience._embedded.experiences} />
     </div>
   )
 }

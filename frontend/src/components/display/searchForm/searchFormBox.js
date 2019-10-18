@@ -1,10 +1,10 @@
 
 import './Search.css'
-import React, {Component} from 'react'
+import React, { Component } from 'react'
 import SearchForm from './searchForm'
 import Request from '../../../helpers/Request';
 
-class SearchFormBox extends Component{
+class SearchFormBox extends Component {
 
   constructor(props) {
     super(props);
@@ -30,15 +30,15 @@ class SearchFormBox extends Component{
     })
   }
 
-  componentDidUpdate(prevState){
-    if(prevState !== this.state.data){
+  componentDidUpdate(prevState) {
+    if (prevState !== this.state.data) {
       this.filterLocationData()
     }
   }
 
-  findLocations(){
+  findLocations() {
 
-    if(!this.state.data._embedded.properties) return null;
+    if (!this.state.data._embedded.properties) return null;
 
     const locations = this.state.data._embedded.properties.map((location) => {
       return location.location
@@ -47,36 +47,31 @@ class SearchFormBox extends Component{
     return locations
   }
 
-  filterLocationData(){
+  filterLocationData() {
     const newLocations = this.findLocations();
 
     const filteredData = newLocations.filter((location, pos, self) => {
       return self.indexOf(location) === pos;
     })
-    console.log(filteredData);
+
     return filteredData
   }
 
-  handleLocationChange(booking){
+  handleLocationChange(booking) {
 
-    console.log(booking.location)
-    if(!booking) return null;
-    this.setState({selectedLocation: booking.location})
+
+    if (!booking) return null;
+    this.setState({ selectedLocation: booking.location })
   }
 
-  handleSelectedDateRange(booking){
-    if(!booking) return null;
-    this.setState({selectedDateRange: booking.dateRange})
+  handleSelectedDateRange(booking) {
+    if (!booking) return null;
+    this.setState({ selectedDateRange: booking.dateRange })
   }
 
-  // componentDidUpdate(prevState){
-  //   // if(!booking) return null;
-  //   // this.setState({selectedDateRange: booking.dateRange})
-  //   console.log(this.state.selectedDateRange)
-  // }
 
-  render(){
-    if(!this.state.data) return null;
+  render() {
+    if (!this.state.data) return null;
 
     return (
       <div className="search">

@@ -1,7 +1,7 @@
 import React from 'react';
 
 class PropertyBookingForm extends React.Component {
-  constructor(props){
+  constructor(props) {
     super(props)
     this.state = {
       stuff: null
@@ -9,9 +9,9 @@ class PropertyBookingForm extends React.Component {
   }
 
   render() {
-    if(!this.props) return null;
-    console.log(this.props.data.price);
-    return(
+    if (!this.props) return null;
+
+    return (
       <div className="property-booking-form">
         <div className="booking-price-header">
           <h3 className="price-text">
@@ -21,7 +21,7 @@ class PropertyBookingForm extends React.Component {
             per night
           </h4>
           <div className="rating-container">
-            <img className="star-icon" src="/images/Star.png" alt="Logo"/>
+            <img className="star-icon" src="/images/Star.png" alt="Logo" />
             <h4 className="rating-text">{this.props.data.rating}</h4>
           </div>
         </div>
@@ -31,7 +31,7 @@ class PropertyBookingForm extends React.Component {
 
           <div className="date-pickers-container">
             <input className="check-in-picker" type="date" placeholder="Check-in" name="checkIn" />
-            <img className="date-arrow" src="/images/DateArrow.png" alt="Logo"/>
+            <img className="date-arrow" src="/images/DateArrow.png" alt="Logo" />
             <input className="check-out-picker" type="date" placeholder="Check-out" name="checkOut" />
           </div>
           <h4 className="your-details-label">Your email</h4>

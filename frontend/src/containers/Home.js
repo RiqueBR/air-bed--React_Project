@@ -11,8 +11,8 @@ class HomeContainer extends React.Component {
   }
 
   render() {
-    if(!this.props) return null;
-    console.log(this.props);
+    if (!this.props) return null;
+
     return (
       <div className="search-body">
         <SearchFormBox
