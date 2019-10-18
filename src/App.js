@@ -1,10 +1,10 @@
 import React, { Component } from 'react';
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
 import './App.css';
-import MainContainer from './containers/Main.js';
+import MainContainer from './views/Main.js';
 import Navbar from './components/Navbar';
-import SinglePropertyContainer from './containers/SinglePropertyContainer';
-import HomeContainer from './containers/Home'
+import SinglePropertyContainer from './views/SinglePropertyContainer';
+import HomeContainer from './views/Home'
 
 
 class App extends Component {
