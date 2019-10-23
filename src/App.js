@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
 import './App.css';
-import MainContainer from './views/Main.js';
+import PropertyList from './views/ListView.js';
 import Navbar from './components/Navbar';
 import SinglePropertyContainer from './views/SinglePropertyContainer';
 import HomeContainer from './views/Home'
@@ -24,6 +24,11 @@ class App extends Component {
     }
   }
 
+  passToApp(listOfProps) {
+    this.setState({ filteredProps: listOfProps }, () => {
+    })
+  }
+
   render() {
     return (
       <div>
@@ -35,12 +40,12 @@ class App extends Component {
                 return <HomeContainer passToApp={this.passToApp} />
               }} />
               <Route exact path="/properties" render={() => {
-                return <MainContainer data={this.state.filteredProps} />
+                return <PropertyList data={this.state.filteredProps} />
               }} />
-              <Route exact path="/properties/:id" render={(props) => {
+              {/* <Route exact path="/properties/:id" render={(props) => {
                 const id = props.match.params.id;
                 return <SinglePropertyContainer id={id} />;
-              }} />
+              }} /> */}
             </Switch>
 
 
@@ -53,10 +58,6 @@ class App extends Component {
 
   }
 
-  passToApp(listOfProps) {
-    this.setState({ filteredProps: listOfProps }, () => {
-    })
-  }
 
 }
 

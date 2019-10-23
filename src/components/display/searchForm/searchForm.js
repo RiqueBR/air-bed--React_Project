@@ -6,7 +6,7 @@ import { Link, withRouter } from 'react-router-dom';
 
 const SearchForm = (props) => {
 
-  if (!props) return null;
+  //if (!props) return null;
 
   const moment = extendMoment(Moment);
 
@@ -86,15 +86,17 @@ const SearchForm = (props) => {
       <h2 className="search-header">Find homes all over the world on whereBnB</h2>
       <p className="search-sub-header">Discover entire homes and private rooms perfect for any trip.</p>
       <form onSubmit={handleSubmit}>
+
         <select className="select-box" name="location">
           {locations}
-
         </select>
+
         <div className="search-date-pickers-container">
           <input className="check-in-picker" type="date" placeholder="Check-in" name="checkIn" />
           <img className="date-arrow" src="/images/DateArrow.png" alt="Logo" />
           <input className="check-out-picker" type="date" placeholder="Check-out" name="checkOut" />
         </div>
+
         <button className="search-form-btn" type="submit">Search</button>
       </form>
     </div>
