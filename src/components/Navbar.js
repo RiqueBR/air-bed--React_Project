@@ -1,13 +1,16 @@
 import React from 'react';
-import {Link} from 'react-router-dom';
+import { Link } from 'react-router-dom';
+import './display/display.css'
 
 const Navbar = (props) => {
-  return(
+  return (
     <header>
       <div className="navbar-container">
-        <img className="logo" src="/images/WhereBnb-logo.png" alt="Logo"/>
+        <Link className="home-link" to="/">
+          <img className="logo" src="/images/WhereBnb-logo.png" alt="Logo" />
+        </Link>
         <Link className="booking-link" to='/bookings'>
-        My bookings
+          My bookings
         </Link>
       </div>
     </header>
