@@ -1,5 +1,4 @@
 import React from 'react';
-import Request from '../helpers/Request.js';
 import PropertyDetails from '../components/display/property/PropertyDetails';
 
 class SinglePropertyContainer extends React.Component {
@@ -10,15 +9,7 @@ class SinglePropertyContainer extends React.Component {
     }
   }
 
-  componentDidMount() {
-    let request = new Request()
-    const url = '/api/properties/' + this.props.id
-    request.get(url).then(data => {
-      this.setState({
-        property: data
-      })
-    })
-  }
+
 
   render() {
     if (!this.state.property) return null;

@@ -7,7 +7,7 @@ const PropertyTile = ({ data }) => {
 
     <div className="property-tile">
       <div className="place-holder-img">
-        <img className="property-image" alt="property" src={data.images[0]}></img>
+        <img className="property-image" alt="property" src={data.imgUrl}></img>
       </div>
       <div className="property-info-container">
         <div className="center-details">

@@ -1,7 +1,6 @@
 import React from 'react';
 import PropertyTileBox from '../components/display/property/PropertyList';
 
-
 class PropertyList extends React.Component {
 
   constructor(props) {
@@ -19,9 +18,8 @@ class PropertyList extends React.Component {
 
 
   render() {
-    //if (!this.props) return null;
 
-    if (!this.state.data) {
+    if (!this.state.properties) {
       return (
         <div className="centered">
           <div className="blob-1"></div>
@@ -34,16 +32,13 @@ class PropertyList extends React.Component {
         {/* <img className="location-image" src="https://firebasestorage.googleapis.com/v0/b/wherebnb-53946.appspot.com/o/NYC%2FBACKGROUND%2Fpexels-photo-408951.jpeg?alt=media&token=3dc99bef-d94b-436f-838f-086bf73132d0">
         </img> */}
         <div>
-          <h1 className="main-location-title">{this.state.data[0].location}
-          </h1>
+          <h1 className="main-location-title">List of properties</h1>
         </div>
-        <PropertyTileBox data={this.state.data} />
+        <PropertyTileBox data={this.state.properties} />
         {/* <ExperienceBox experiences={this.state.experiences}/> */}
       </div>
     )
   }
-
-
 }
 
 export default PropertyList;

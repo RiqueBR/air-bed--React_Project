@@ -2,7 +2,7 @@
 import './Search.css'
 import React, { Component } from 'react'
 import SearchForm from './searchForm'
-import Request from '../../../helpers/Request';
+
 
 class SearchFormBox extends Component {
 
@@ -19,15 +19,6 @@ class SearchFormBox extends Component {
     this.handleSelectedDateRange = this.handleSelectedDateRange.bind(this);
 
 
-  }
-
-  componentDidMount() {
-    let request = new Request()
-    request.get('/api/properties').then(data => {
-      this.setState({
-        data: data
-      })
-    })
   }
 
   componentDidUpdate(prevState) {
