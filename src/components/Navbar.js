@@ -1,8 +1,8 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import './display/display.css'
+import './display.css'
 
-const Navbar = (props) => {
+const Navbar = () => {
   return (
     <header>
       <div className="navbar-container">

@@ -1,5 +1,5 @@
 import React from 'react';
-import PropertyTileBox from '../components/display/property/PropertyList';
+import PropertyTileBox from '../components/property/PropertyList';
 
 class PropertyList extends React.Component {
 

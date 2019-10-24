@@ -1,5 +1,5 @@
 import React from 'react';
-import PropertyDetails from '../components/display/property/PropertyDetails';
+import PropertyDetails from '../components/property/PropertyDetails';
 
 class SinglePropertyContainer extends React.Component {
   constructor(props) {

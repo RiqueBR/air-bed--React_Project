@@ -1,5 +1,5 @@
 import React from 'react';
-import SearchFormBox from '../components/display/searchForm/searchFormBox'
+import SearchFormBox from '../components/searchForm/searchFormBox'
 
 class HomeContainer extends React.Component {
 
