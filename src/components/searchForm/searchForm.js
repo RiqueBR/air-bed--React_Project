@@ -8,7 +8,7 @@ const SearchForm = (props) => {
 
   //if (!props) return null;
 
-  const moment = extendMoment(Moment);
+  //const moment = extendMoment(Moment);
 
   function handleSubmit(event) {
     event.preventDefault();
@@ -19,67 +19,67 @@ const SearchForm = (props) => {
       "dateRange": null
     }
 
-    const start = booking.checkIn
-    const end = booking.checkOut
+    //const start = booking.checkIn
+    //const end = booking.checkOut
 
-    const range = moment.range(start, end)
+    //const range = moment.range(start, end)
 
-    checkOverlap(range)
+    //checkOverlap(range)
 
-    booking.dateRange = range;
+    //booking.dateRange = range;
 
-    props.handleLocationChange(booking)
-    props.handleSelectedDateRange(booking)
+    // props.handleLocationChange(booking)
+    // props.handleSelectedDateRange(booking)
   }
 
-  function checkOverlap(inputRange) {
+  // function checkOverlap(inputRange) {
 
-    // grab existing user bookings with start and end dates to form moment.range objects
+  //   // grab existing user bookings with start and end dates to form moment.range objects
 
-    const filteredBookings = props.fullData
+  //   const filteredBookings = props.fullData
 
-    const rangeListsPerProp = filteredBookings.map(prop => {
+  //   const rangeListsPerProp = filteredBookings.map(prop => {
 
-      if (!prop) return null;
+  //     if (!prop) return null;
 
-      return prop.users.map(user => {
-        const sd = moment(user.startDate.slice(0, 10), 'YYYY-MM-DD');
-        const ed = moment(user.endDate.slice(0, 10), 'YYYY-MM-DD');
-        const rangeObject = moment.range(sd, ed)
+  //     return prop.users.map(user => {
+  //       const sd = moment(user.startDate.slice(0, 10), 'YYYY-MM-DD');
+  //       const ed = moment(user.endDate.slice(0, 10), 'YYYY-MM-DD');
+  //       const rangeObject = moment.range(sd, ed)
 
-        return rangeObject;
-      })
-    })
-
-
+  //       return rangeObject;
+  //     })
+  //   })
 
 
-    const noOverlapList = rangeListsPerProp.map((perRange, index) => {
-      if (perRange.length === 0) {
-        return filteredBookings[index];
-      } else {
-        for (let range of perRange) {
-          if (range.overlaps(inputRange)) {
-            // return null if there is an overlap
-
-            return null;
-          }
-          // else return the property to the list noOverlapList
-          return filteredBookings[index]
-        }
-      }
-    })
 
 
-    const displayList = noOverlapList.filter(prop => prop !== null)
-    props.passToApp(displayList)
-    props.history.push("/properties");
-  }
+  //   const noOverlapList = rangeListsPerProp.map((perRange, index) => {
+  //     if (perRange.length === 0) {
+  //       return filteredBookings[index];
+  //     } else {
+  //       for (let range of perRange) {
+  //         if (range.overlaps(inputRange)) {
+  //           // return null if there is an overlap
+
+  //           return null;
+  //         }
+  //         // else return the property to the list noOverlapList
+  //         return filteredBookings[index]
+  //       }
+  //     }
+  //   })
 
 
-  const locations = props.filteredLocationOptions.map((location, index) => {
-    return <option key={index} value={location}>{location}</option>
-  })
+  //   const displayList = noOverlapList.filter(prop => prop !== null)
+  //   props.passToApp(displayList)
+  //   props.history.push("/properties");
+  // }
+
+
+  // const locations = props.filteredLocationOptions.map((location, index) => {
+  //   return <option key={index} value={location}>{location}</option>
+  // })
 
   return (
     <div className="search-form-container">
@@ -87,13 +87,13 @@ const SearchForm = (props) => {
       <p className="search-sub-header">Discover entire homes and private rooms perfect for any trip.</p>
       <form onSubmit={handleSubmit}>
 
-        <select className="select-box" name="location">
+        {/* <select className="select-box" name="location">
           {locations}
-        </select>
+        </select> */}
 
         <div className="search-date-pickers-container">
           <input className="check-in-picker" type="date" placeholder="Check-in" name="checkIn" />
-          <img className="date-arrow" src="/images/DateArrow.png" alt="Logo" />
+          {/* <img className="date-arrow" src="/images/DateArrow.png" alt="Logo" /> */}
           <input className="check-out-picker" type="date" placeholder="Check-out" name="checkOut" />
         </div>
 
