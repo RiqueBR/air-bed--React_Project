@@ -1,42 +1,27 @@
 
-import './Search.css'
-import React, { Component } from 'react'
+import React, { useEffect } from 'react';
+import { connect } from 'react-redux';
+
 import SearchForm from './searchForm'
+import { fetchProperties } from '../../actions/propertiesActions'
+
+import './Search.css'
+
+const SearchFormBox = ({ dispatch, loading, properties, hasErrors }) => {
+
+  useEffect(() => {
+    dispatch(fetchProperties())
+  }, [dispatch])
+
+  function findLocations() {
 
 
-class SearchFormBox extends Component {
+    const locations = this.properties.map((location) => {
+      return location.location
+    })
 
-  constructor(props) {
-    super(props);
-    this.state = {
-      data: null,
-      selectedLocation: null,
-      selectedDateRange: null
-    }
-    //this.filterLocationData = this.filterLocationData.bind(this);
-    //this.findLocations = this.findLocations.bind(this);
-    this.handleLocationChange = this.handleLocationChange.bind(this);
-    //this.handleSelectedDateRange = this.handleSelectedDateRange.bind(this);
-
-
+    return locations
   }
-
-  componentDidUpdate(prevState) {
-    if (prevState !== this.state.data) {
-      this.filterLocationData()
-    }
-  }
-
-  // findLocations() {
-
-  //   if (!this.state.data._embedded.properties) return null;
-
-  //   const locations = this.state.data._embedded.properties.map((location) => {
-  //     return location.location
-  //   })
-
-  //   return locations
-  // }
 
   // filterLocationData() {
   //   const newLocations = this.findLocations();
@@ -48,10 +33,10 @@ class SearchFormBox extends Component {
   //   return filteredData
   // }
 
-  handleLocationChange(booking) {
-    if (!booking) return null;
-    this.setState({ selectedLocation: booking.location })
-  }
+  // handleLocationChange(booking) {
+  //   if (!booking) return null;
+  //   this.setState({ selectedLocation: booking.location })
+  // }
 
   // handleSelectedDateRange(booking) {
   //   if (!booking) return null;
@@ -59,23 +44,26 @@ class SearchFormBox extends Component {
   // }
 
 
-  render() {
-    //if (!this.state.data) return null;
-
     return (
       <div className="search">
         <div className="search-header-container">
           <SearchForm
             //handleSelectedDateRange={this.handleSelectedDateRange}
-            handleLocationChange={this.handleLocationChange}
+            // handleLocationChange={this.handleLocationChange}
             //filteredLocationOptions={this.filterLocationData()}
             //fullData={this.state.data._embedded.properties}
-            passToApp={this.props.passToApp}
+            // passToApp={this.props.passToApp}
           />
         </div>
       </div>
     )
-  }
 }
 
-export default SearchFormBox
+// Map Redux state to React component props
+const mapStateToProps = state => ({
+  loading: state.properties.loading,
+  properties: state.properties,
+  hasErrors: state.properties.hasErrors,
+})
+// Connect Redux to React
+export default connect(mapStateToProps)(SearchFormBox)
