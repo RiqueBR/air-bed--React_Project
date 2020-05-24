@@ -13,15 +13,16 @@ const SearchFormBox = ({ dispatch, loading, properties, hasErrors }) => {
     dispatch(fetchProperties())
   }, [dispatch])
 
-  function findLocations() {
+  // This needs patched on the backend, location must return a city
+  // function findLocations() {
+  //   // const locations = this.properties.map((location) => {
+  //   //   return location.location
+  //   // })
+  //   return locations
+  // }
 
+  const locations = ['Edinburgh', 'Glasgow']
 
-    const locations = this.properties.map((location) => {
-      return location.location
-    })
-
-    return locations
-  }
 
   // filterLocationData() {
   //   const newLocations = this.findLocations();
@@ -53,6 +54,7 @@ const SearchFormBox = ({ dispatch, loading, properties, hasErrors }) => {
             //filteredLocationOptions={this.filterLocationData()}
             //fullData={this.state.data._embedded.properties}
             // passToApp={this.props.passToApp}
+            locations={locations}
           />
         </div>
       </div>

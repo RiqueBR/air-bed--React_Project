@@ -28,15 +28,6 @@ class App extends Component {
     })
   }
 
-  mapStateToProps(state) {
-    return {
-      properties: state.properties
-    }
-  }
-  
-  
-  
-  
   render() {
     return (
       <div>

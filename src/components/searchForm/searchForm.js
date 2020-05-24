@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React from 'react';
 import Moment from 'moment';
 import { extendMoment } from 'moment-range';
 import { Link, withRouter } from 'react-router-dom';
@@ -11,9 +11,11 @@ const SearchForm = (props) => {
   //const moment = extendMoment(Moment);
 
   function handleSubmit(event) {
+    console.log(event);
+    
     event.preventDefault();
     const booking = {
-      "location": event.target.location.value,
+      // "location": props.locations,
       "checkIn": event.target.checkIn.value,
       "checkOut": event.target.checkOut.value,
       "dateRange": null
@@ -77,9 +79,9 @@ const SearchForm = (props) => {
   // }
 
 
-  // const locations = props.filteredLocationOptions.map((location, index) => {
-  //   return <option key={index} value={location}>{location}</option>
-  // })
+  const locations = props.locations.map((location, index) => {
+    return <option key={index} value={location}>{location}</option>
+  })
 
   return (
     <div className="search-form-container">
@@ -87,9 +89,9 @@ const SearchForm = (props) => {
       <p className="search-sub-header">Discover entire homes and private rooms perfect for any trip.</p>
       <form onSubmit={handleSubmit}>
 
-        {/* <select className="select-box" name="location">
+        <select className="select-box" name="location">
           {locations}
-        </select> */}
+        </select>
 
         <div className="search-date-pickers-container">
           <input className="check-in-picker" type="date" placeholder="Check-in" name="checkIn" />
