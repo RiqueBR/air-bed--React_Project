@@ -17,7 +17,6 @@ class App extends Component {
     this.passToApp = this.passToApp.bind(this);
   }
 
-
   componentDidUpdate(prevState) {
     if (prevState.filteredProps !== this.state.filteredProps) {
       return
@@ -29,6 +28,15 @@ class App extends Component {
     })
   }
 
+  mapStateToProps(state) {
+    return {
+      properties: state.properties
+    }
+  }
+  
+  
+  
+  
   render() {
     return (
       <div>
@@ -54,11 +62,7 @@ class App extends Component {
       </div>
 
     );
-
-
   }
-
-
 }
 
 export default App;
