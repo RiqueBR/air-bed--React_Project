@@ -44,9 +44,7 @@ const SearchFormBox = ({ dispatch, loading, properties, hasErrors }) => {
   //   this.setState({ selectedDateRange: booking.dateRange })
   // }
 
-  const renderProperties = () => {
-    fetchProperties();
-  }
+
 
 
     return (
@@ -58,8 +56,9 @@ const SearchFormBox = ({ dispatch, loading, properties, hasErrors }) => {
             //filteredLocationOptions={this.filterLocationData()}
             //fullData={this.state.data._embedded.properties}
             // passToApp={this.props.passToApp}
-            locations={locations}
-          >{renderProperties()}</SearchForm>
+            locations={locations}>
+          
+          </SearchForm>
         </div>
       </div>
     )
@@ -73,3 +72,5 @@ const mapStateToProps = state => ({
 })
 // Connect Redux to React
 export default connect(mapStateToProps)(SearchFormBox)
+
+
