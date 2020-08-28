@@ -18,12 +18,11 @@ export const getPropertiesFailure = () => ({
 })
 
 // Combine them all in an asynchronous thunk
-export function fetchProperties() {
+export function fetchProperties(value) {
   return async dispatch => {
     dispatch(getProperties())
-
     try {
-      const response = await fetch('/api/property/')
+      const response = await fetch(`/api/property/?location=${value}`)
       const data = await response.json()
 
       dispatch(getPropertiesSuccess(data))
