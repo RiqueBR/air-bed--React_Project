@@ -1,9 +1,10 @@
 
-import React, { useEffect } from 'react';
-import { connect } from 'react-redux';
+import React, { useEffect, useState } from 'react';
+import { connect, useStore } from 'react-redux';
 
-import SearchForm from './searchForm'
 import { fetchProperties } from '../../actions/propertiesActions'
+// import useForm  from '../../utils/hooks/useForm'
+import SearchForm from './searchForm'
 
 import './Search.css'
 
@@ -13,54 +14,62 @@ const SearchFormBox = ({ dispatch, loading, properties, hasErrors }) => {
     dispatch(fetchProperties())
   }, [dispatch])
 
-  // This needs patched on the backend, location must return a city
-  // function findLocations() {
-  //   // const locations = this.properties.map((location) => {
-  //   //   return location.location
-  //   // })
-  //   return locations
-  // }
+  const [locationSelected, setLocationSelected] = useState('');
 
-  const locations = ['Edinburgh', 'Glasgow']
+  function handleInputChange(event) {
+    setLocationSelected(event.target.value)
+  }
+  
+  function handleSubmit(event) {
+    event.preventDefault()
+    console.log(locationSelected);
+  }
 
 
-  // filterLocationData() {
-  //   const newLocations = this.findLocations();
+  // Here's how to access state
+  const store = useStore()
 
-  //   const filteredData = newLocations.filter((location, pos, self) => {
-  //     return self.indexOf(location) === pos;
-  //   })
-
-  //   return filteredData
-  // }
-
-  // handleLocationChange(booking) {
-  //   if (!booking) return null;
-  //   this.setState({ selectedLocation: booking.location })
-  // }
-
-  // handleSelectedDateRange(booking) {
-  //   if (!booking) return null;
-  //   this.setState({ selectedDateRange: booking.dateRange })
-  // }
+  const renderLocationOptions = store.getState().locations.locations.map(location => {
+  return <option
+    key={location.id}
+    value={location.city} 
+    name={location.city}>
+      {location.city} - {location.country}
+    </option>
+  });
 
 
 
 
     return (
-      <div className="search">
-        <div className="search-header-container">
-          <SearchForm
-            //handleSelectedDateRange={this.handleSelectedDateRange}
-            // handleLocationChange={this.handleLocationChange}
-            //filteredLocationOptions={this.filterLocationData()}
-            //fullData={this.state.data._embedded.properties}
-            // passToApp={this.props.passToApp}
-            locations={locations}>
+        <form onSubmit={handleSubmit}>
+          <div>
+            <label>Location</label>
+            <select 
+              name="location"
+              value={locationSelected}
+              onChange={handleInputChange}>
+              {renderLocationOptions}
+            </select>
+          {/* <input type="text" onChange={handleInputChange}></input> */}
+
+          </div>
+          <button type="submit">Search</button>
+        </form>
+
+      // <div className="search">
+      //   <div className="search-header-container">
+      //     <SearchForm
+      //       //handleSelectedDateRange={this.handleSelectedDateRange}
+      //       // handleLocationChange={this.handleLocationChange}
+      //       //filteredLocationOptions={this.filterLocationData()}
+      //       //fullData={this.state.data._embedded.properties}
+      //       // passToApp={this.props.passToApp}
+      //       locations={locations}>
           
-          </SearchForm>
-        </div>
-      </div>
+      //     </SearchForm>
+      //   </div>
+      // </div>
     )
 }
 
