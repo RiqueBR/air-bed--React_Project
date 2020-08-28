@@ -35,5 +35,6 @@
   ],
   "devDependencies": {
     "redux": "^4.0.5"
-  }
+  },
+  "proxy": "http://www.solideveloper.com"
 }

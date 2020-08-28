@@ -44,6 +44,10 @@ const SearchFormBox = ({ dispatch, loading, properties, hasErrors }) => {
   //   this.setState({ selectedDateRange: booking.dateRange })
   // }
 
+  const renderProperties = () => {
+    fetchProperties();
+  }
+
 
     return (
       <div className="search">
@@ -55,7 +59,7 @@ const SearchFormBox = ({ dispatch, loading, properties, hasErrors }) => {
             //fullData={this.state.data._embedded.properties}
             // passToApp={this.props.passToApp}
             locations={locations}
-          />
+          >{renderProperties()}</SearchForm>
         </div>
       </div>
     )

@@ -2,24 +2,45 @@ import React from 'react';
 import Moment from 'moment';
 import { extendMoment } from 'moment-range';
 import { Link, withRouter } from 'react-router-dom';
+import { Component } from 'react';
 
 
-const SearchForm = (props) => {
+class SearchForm extends React.Component { 
 
-  //if (!props) return null;
+  constructor(props) {
+    super(props);
+    this.state = {
+      location: '',
+      checkIn: '',
+      checkOut: '',
+      dateRange: ''
+    }
+
+    this.handleChange = this.handleChange.bind(this);
+    this.handleSubmit = this.handleSubmit.bind(this);
+    this.locations = this.locations.bind(this);
+  }
 
   //const moment = extendMoment(Moment);
 
-  function handleSubmit(event) {
-    console.log(event);
+  // const [location, setLocation] = useState("");
+  // const [checkIn, setCheckIn] = useState("");
+  // const [checkOut, setCheckOut] = useState("");
+  // const [dateRange, setDateRange] = useState("");
+
+  handleChange(event) {
+    this.setState({
+      location: event.target.location.value,
+      checkIn: event.target.checkIn.value,
+      checkOut: event.target.checkOut.value,
+      
+    })
+  }
+
+  handleSubmit(event) {
     
     event.preventDefault();
-    const booking = {
-      // "location": props.locations,
-      "checkIn": event.target.checkIn.value,
-      "checkOut": event.target.checkOut.value,
-      "dateRange": null
-    }
+    console.log(event);
 
     //const start = booking.checkIn
     //const end = booking.checkOut
@@ -79,18 +100,32 @@ const SearchForm = (props) => {
   // }
 
 
-  const locations = props.locations.map((location, index) => {
-    return <option key={index} value={location}>{location}</option>
+  locations() {
+    return this.props.locations.map((location, index) => {
+      return <option
+        key={index}
+        value={location}>
+        {location}
+      </option>
   })
+}
 
-  return (
-    <div className="search-form-container">
+
+  render() {
+
+    return (
+      <div className="search-form-container">
       <h2 className="search-header">Find homes all over the world on whereBnB</h2>
       <p className="search-sub-header">Discover entire homes and private rooms perfect for any trip.</p>
-      <form onSubmit={handleSubmit}>
 
-        <select className="select-box" name="location">
-          {locations}
+      <form onSubmit={this.handleSubmit}>
+
+        <select 
+          className="select-box" 
+          name="location"
+          value={this.state.value}
+          onChange={this.handleChange}>
+          {this.locations()}
         </select>
 
         <div className="search-date-pickers-container">
@@ -103,7 +138,8 @@ const SearchForm = (props) => {
       </form>
     </div>
   )
-
+  }
 }
+
 
 export default withRouter(SearchForm);

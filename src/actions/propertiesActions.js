@@ -23,7 +23,7 @@ export function fetchProperties() {
     dispatch(getProperties())
 
     try {
-      const response = await fetch('http://www.solideveloper.com/api/property/')
+      const response = await fetch('/api/property/')
       const data = await response.json()
 
       dispatch(getPropertiesSuccess(data))
