@@ -6,9 +6,9 @@ const PropertyList = ({ properties }) => {
   const store = useStore();
   // console.log(properties);
 
-  const listResultProperties = properties.map((property, index) => {
+  const listResultProperties = properties.map((property) => {
     return (
-        <PropertyTile key={ index } { ...property } />
+        <PropertyTile key={ property.id } { ...property } />
     )
     
   })
@@ -24,5 +24,5 @@ const mapStateToProps = state => ({
   properties: state.properties.properties.results
   // TODO: add errors here
 })
-// export default connect(PropertyBox);
+
 export default connect(mapStateToProps)(PropertyList);
