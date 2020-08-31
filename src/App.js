@@ -17,33 +17,32 @@ const App = ({ dispatch }) => {
   }, [])
 
   return (
-    <div>
-      <Router>
-        <React.Fragment>
-          <Navbar />
-          <Switch>
-            <Route exact path="/" render={() => {
+      <div>
+          <Router>
+              <React.Fragment>
+                  <Navbar />
+                  <Switch>
+                      <Route exact path="/" render={ () => {
               return <HomeContainer />
-            }} />
-            <Route exact path="/properties" render={() => {
-              return <PropertyList />
-            }} />
-            {/* <Route exact path="/properties/:id" render={(props) => {
+            } }/>
+                      <Route exact path="/properties" render={ () => {
+                  return <PropertyList />
+                } }/>
+                      {/* <Route exact path="/properties/:id" render={(props) => {
                 const id = props.match.params.id;
                 return <SinglePropertyContainer id={id} />;
               }} /> */}
-          </Switch>
+                  </Switch>
 
-
-        </React.Fragment>
-      </Router>
-    </div>
+              </React.Fragment>
+          </Router>
+      </div>
 
   );
 }
 
 const mapStateToProps = state => ({
-  loading_locations: state.locations.loading,
+  loading: state.locations.loading,
   locations: state.locations,
   hasErrors: state.locations.hasErrors,
 })

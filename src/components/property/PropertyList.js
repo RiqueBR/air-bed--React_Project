@@ -2,28 +2,27 @@ import React from 'react';
 import { connect, useStore } from 'react-redux';
 import PropertyTile from './PropertyTile';
 
-const PropertyBox = ({ data }) => {
+const PropertyList = ({ properties }) => {
   const store = useStore();
-  console.log(store.getState());
+  // console.log(properties);
 
-  if (!data) return null;
-
-  const properties = data.map((property, index) => {
+  const listResultProperties = properties.map((property, index) => {
     return (
-      <PropertyTile key={index} data={property} />
+        <PropertyTile key={ index } { ...property } />
     )
+    
   })
 
   return (
-    <div className="property-list">
-      {properties}
-    </div>
+      <div className="property-list">
+          {listResultProperties}
+      </div>
   )
 }
 
-// const mapStateToProps = state => ({ 
-//   index, properties
-// })
+const mapStateToProps = state => ({ 
+  properties: state.properties.properties.results
+  // TODO: add errors here
+})
 // export default connect(PropertyBox);
-export default PropertyBox;
-
+export default connect(mapStateToProps)(PropertyList);

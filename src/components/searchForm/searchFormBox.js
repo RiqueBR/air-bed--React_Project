@@ -1,7 +1,6 @@
-
 import React, { useState } from 'react';
 import { connect } from 'react-redux';
-import {useHistory} from 'react-router-dom';
+import { useHistory } from 'react-router-dom';
 
 import { fetchProperties } from '../../actions/propertiesActions'
 
@@ -9,7 +8,7 @@ import './Search.css'
 
 const SearchFormBox = ({ dispatch, loading, locations, hasErrors }) => {
 
-  const [locationSelected, setLocationSelected] = useState('');
+  const [ locationSelected, setLocationSelected ] = useState('');
   const history = useHistory()
 
   function handleInputChange(event) {
@@ -23,33 +22,32 @@ const SearchFormBox = ({ dispatch, loading, locations, hasErrors }) => {
     })
   }
 
-
   const renderLocationOptions = locations.map(location => {
     return <option
-      key={location.id}
-      value={location.id}
-      name={location.city}>
-      {location.city} - {location.country}
+      key={ location.id }
+      value={ location.id }
+      name={ location.city }>
+        {location.city} - {location.country}
     </option>
   });
 
   return (
     // TODO: Needs date input fields
-    <form onSubmit={handleSubmit}>
-      <div>
-        <label>Location</label>
-        <select
+      <form onSubmit={ handleSubmit }>
+          <div>
+              <label>Location</label>
+              <select
           name="location"
-          value={locationSelected}
-          onChange={handleInputChange}>
-          <option value=''>-- Please select a city --</option>
-          {renderLocationOptions}
-        </select>
+          value={ locationSelected }
+          onChange={ handleInputChange }>
+                  <option value=''>-- Please select a city --</option>
+                  {renderLocationOptions}
+              </select>
 
-      </div>
-      <button type="submit">Search</button>
-      {/* <UIButton type="submit" title="search" path="/properties" /> */}
-    </form>
+          </div>
+          <button type="submit">Search</button>
+          {/* <UIButton type="submit" title="search" path="/properties" /> */}
+      </form>
 
     // TODO: Remember to compare class names to stylesheet
     // <div className="search">
@@ -67,5 +65,3 @@ const mapStateToProps = state => ({
 })
 // Connect Redux to React
 export default connect(mapStateToProps)(SearchFormBox)
-
-

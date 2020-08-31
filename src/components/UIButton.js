@@ -1,5 +1,5 @@
 import React from 'react';
-import { useHistory } from "react-router-dom";
+import { useHistory } from 'react-router-dom';
 
 function UIButton(props) {
 
@@ -12,7 +12,7 @@ function UIButton(props) {
     }
 
     return (
-        <button type="button" onClick={handleClick}>
+        <button type="button" onClick={ handleClick }>
             {buttonTitle}
         </button>
     );
