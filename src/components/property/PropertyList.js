@@ -1,7 +1,10 @@
 import React from 'react';
+import { connect, useStore } from 'react-redux';
 import PropertyTile from './PropertyTile';
 
-const PropertyTileBox = ({ data }) => {
+const PropertyBox = ({ data }) => {
+  const store = useStore();
+  console.log(store.getState());
 
   if (!data) return null;
 
@@ -18,4 +21,9 @@ const PropertyTileBox = ({ data }) => {
   )
 }
 
-export default PropertyTileBox;
+// const mapStateToProps = state => ({ 
+//   index, properties
+// })
+// export default connect(PropertyBox);
+export default PropertyBox;
+
