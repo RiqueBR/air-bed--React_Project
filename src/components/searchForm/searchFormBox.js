@@ -7,11 +7,12 @@ import { fetchProperties } from '../../actions/propertiesActions'
 
 import './Search.css'
 
-const SearchFormBox = ({ dispatch, loading, properties, hasErrors }) => {
+const SearchFormBox = ({ dispatch, loading, locations, hasErrors }) => {
   // TODO: Call properties list (below) from somewhere else
   // useEffect(() => {
   //   dispatch(fetchProperties())
   // }, [dispatch])
+
 
   const [locationSelected, setLocationSelected] = useState('');
 
@@ -21,7 +22,6 @@ const SearchFormBox = ({ dispatch, loading, properties, hasErrors }) => {
 
   function handleSubmit(event) {
     event.preventDefault()
-    console.log(locationSelected);
 
     if (locationSelected !== undefined || locationSelected !== '')
       useEffect(() => {
@@ -31,9 +31,9 @@ const SearchFormBox = ({ dispatch, loading, properties, hasErrors }) => {
 
 
   // Here's how to access state
-  const store = useStore()
+  // const store = useStore()
 
-  const renderLocationOptions = store.getState().locations.locations.map(location => {
+  const renderLocationOptions = locations.map(location => {
     return <option
       key={location.id}
       value={location.id}
@@ -51,8 +51,8 @@ const SearchFormBox = ({ dispatch, loading, properties, hasErrors }) => {
           name="location"
           value={locationSelected}
           onChange={handleInputChange}>
-          {renderLocationOptions}
           <option value=''>-- Please select a city --</option>
+          {renderLocationOptions}
         </select>
 
       </div>
@@ -69,9 +69,9 @@ const SearchFormBox = ({ dispatch, loading, properties, hasErrors }) => {
 
 // Map Redux state to React component props
 const mapStateToProps = state => ({
-  loading: state.properties.loading,
-  properties: state.properties,
-  hasErrors: state.properties.hasErrors,
+  loading: state.locations.locations.loading,
+  locations: state.locations.locations,
+  hasErrors: state.locations.locations.hasErrors,
 })
 // Connect Redux to React
 export default connect(mapStateToProps)(SearchFormBox)
