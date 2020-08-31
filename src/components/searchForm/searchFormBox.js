@@ -1,20 +1,16 @@
 
-import React, { useEffect, useState } from 'react';
-import { connect, useStore } from 'react-redux';
-import UIButton from '../UIButton';
+import React, { useState } from 'react';
+import { connect } from 'react-redux';
+import {useHistory} from 'react-router-dom';
 
 import { fetchProperties } from '../../actions/propertiesActions'
 
 import './Search.css'
 
 const SearchFormBox = ({ dispatch, loading, locations, hasErrors }) => {
-  // TODO: Call properties list (below) from somewhere else
-  // useEffect(() => {
-  //   dispatch(fetchProperties())
-  // }, [dispatch])
-
 
   const [locationSelected, setLocationSelected] = useState('');
+  const history = useHistory()
 
   function handleInputChange(event) {
     setLocationSelected(event.target.value)
@@ -22,16 +18,11 @@ const SearchFormBox = ({ dispatch, loading, locations, hasErrors }) => {
 
   function handleSubmit(event) {
     event.preventDefault()
-
-    if (locationSelected !== undefined || locationSelected !== '')
-      useEffect(() => {
-        dispatch(fetchProperties(locationSelected))
-      }, [dispatch])
+    dispatch(fetchProperties(locationSelected)).then(() => {
+      history.push('/properties')
+    })
   }
 
-
-  // Here's how to access state
-  // const store = useStore()
 
   const renderLocationOptions = locations.map(location => {
     return <option
@@ -56,7 +47,8 @@ const SearchFormBox = ({ dispatch, loading, locations, hasErrors }) => {
         </select>
 
       </div>
-      <UIButton type="submit" title="search" path="/properties" />
+      <button type="submit">Search</button>
+      {/* <UIButton type="submit" title="search" path="/properties" /> */}
     </form>
 
     // TODO: Remember to compare class names to stylesheet
