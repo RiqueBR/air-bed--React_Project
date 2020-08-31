@@ -1,35 +1,20 @@
-import React, { Component } from 'react';
+import React, { useEffect } from 'react';
+import { connect } from 'react-redux';
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
-import './App.css';
-import PropertyList from './views/ListView.js';
+
+import { fetchLocations } from './actions/locationsActions'
+
 import Navbar from './components/Navbar';
-import SinglePropertyContainer from './views/SinglePropertyContainer';
 import HomeContainer from './views/Home'
 
+import './App.css';
 
-class App extends Component {
+const App = ({dispatch}) => {
 
-  constructor(props) {
-    super(props);
-    this.state = {
-      filteredProps: null
-    }
-    this.passToApp = this.passToApp.bind(this);
-  }
+  useEffect(() => {
+    dispatch(fetchLocations())
+  }, [dispatch])
 
-
-  componentDidUpdate(prevState) {
-    if (prevState.filteredProps !== this.state.filteredProps) {
-      return
-    }
-  }
-
-  passToApp(listOfProps) {
-    this.setState({ filteredProps: listOfProps }, () => {
-    })
-  }
-
-  render() {
     return (
       <div>
         <Router>
@@ -37,11 +22,11 @@ class App extends Component {
             <Navbar />
             <Switch>
               <Route exact path="/" render={() => {
-                return <HomeContainer passToApp={this.passToApp} />
+                return <HomeContainer  />
               }} />
-              <Route exact path="/properties" render={() => {
+              {/* <Route exact path="/properties" render={() => {
                 return <PropertyList data={this.state.filteredProps} />
-              }} />
+              }} /> */}
               {/* <Route exact path="/properties/:id" render={(props) => {
                 const id = props.match.params.id;
                 return <SinglePropertyContainer id={id} />;
@@ -54,11 +39,12 @@ class App extends Component {
       </div>
 
     );
-
-
-  }
-
-
 }
 
-export default App;
+const mapStateToProps = state => ({
+  loading_locations: state.locations.loading,
+  locations: state.locations,
+  hasErrors: state.locations.hasErrors,
+})
+
+export default connect(mapStateToProps)(App)

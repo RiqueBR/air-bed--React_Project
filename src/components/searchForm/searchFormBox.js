@@ -1,81 +1,79 @@
 
+import React, { useEffect, useState } from 'react';
+import { connect, useStore } from 'react-redux';
+
+import { fetchProperties } from '../../actions/propertiesActions'
+
 import './Search.css'
-import React, { Component } from 'react'
-import SearchForm from './searchForm'
 
+const SearchFormBox = ({ dispatch, loading, properties, hasErrors }) => {
+  // TODO: Call properties list (below) from somewhere else
+  useEffect(() => {
+    dispatch(fetchProperties())
+  }, [dispatch])
 
-class SearchFormBox extends Component {
+  const [locationSelected, setLocationSelected] = useState('');
 
-  constructor(props) {
-    super(props);
-    this.state = {
-      data: null,
-      selectedLocation: null,
-      selectedDateRange: null
-    }
-    //this.filterLocationData = this.filterLocationData.bind(this);
-    //this.findLocations = this.findLocations.bind(this);
-    this.handleLocationChange = this.handleLocationChange.bind(this);
-    //this.handleSelectedDateRange = this.handleSelectedDateRange.bind(this);
+  function handleInputChange(event) {
+    setLocationSelected(event.target.value)
+  }
+  
+  function handleSubmit(event) {
+    event.preventDefault()
+    console.log(locationSelected);
 
-
+    if (locationSelected !== undefined || locationSelected !== '')
+      dispatch(fetchProperties(locationSelected))
   }
 
-  componentDidUpdate(prevState) {
-    if (prevState !== this.state.data) {
-      this.filterLocationData()
-    }
-  }
 
-  // findLocations() {
+  // Here's how to access state
+  const store = useStore()
 
-  //   if (!this.state.data._embedded.properties) return null;
-
-  //   const locations = this.state.data._embedded.properties.map((location) => {
-  //     return location.location
-  //   })
-
-  //   return locations
-  // }
-
-  // filterLocationData() {
-  //   const newLocations = this.findLocations();
-
-  //   const filteredData = newLocations.filter((location, pos, self) => {
-  //     return self.indexOf(location) === pos;
-  //   })
-
-  //   return filteredData
-  // }
-
-  handleLocationChange(booking) {
-    if (!booking) return null;
-    this.setState({ selectedLocation: booking.location })
-  }
-
-  // handleSelectedDateRange(booking) {
-  //   if (!booking) return null;
-  //   this.setState({ selectedDateRange: booking.dateRange })
-  // }
+  const renderLocationOptions = store.getState().locations.locations.map(location => {
+  return <option
+    key={location.id}
+    value={location.id} 
+    name={location.city}>
+      {location.city} - {location.country}
+    </option>
+  });
 
 
-  render() {
-    //if (!this.state.data) return null;
+
 
     return (
-      <div className="search">
-        <div className="search-header-container">
-          <SearchForm
-            //handleSelectedDateRange={this.handleSelectedDateRange}
-            handleLocationChange={this.handleLocationChange}
-            //filteredLocationOptions={this.filterLocationData()}
-            //fullData={this.state.data._embedded.properties}
-            passToApp={this.props.passToApp}
-          />
-        </div>
-      </div>
+      // TODO: Needs date input fields
+        <form onSubmit={handleSubmit}>
+          <div>
+            <label>Location</label>
+            <select 
+              name="location"
+              value={locationSelected}
+              onChange={handleInputChange}>
+              {renderLocationOptions}
+              <option value=''>-- Please select a city --</option>
+            </select>
+
+          </div>
+          <button type="submit">Search</button>
+        </form>
+
+      // TODO: Remember to compare class names to stylesheet
+      // <div className="search">
+      //   <div className="search-header-container">
+      //   </div>
+      // </div>
     )
-  }
 }
 
-export default SearchFormBox
+// Map Redux state to React component props
+const mapStateToProps = state => ({
+  loading: state.properties.loading,
+  properties: state.properties,
+  hasErrors: state.properties.hasErrors,
+})
+// Connect Redux to React
+export default connect(mapStateToProps)(SearchFormBox)
+
+
