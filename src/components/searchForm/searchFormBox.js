@@ -19,7 +19,7 @@ const SearchFormBox = ({ dispatch, loading, locations, hasErrors }) => {
   function handleSubmit(event) {
     event.preventDefault()
     dispatch(fetchProperties(locationSelected)).then(() => {
-      history.push('/properties')
+      history.push('/properties');
     })
   }
 
