@@ -8,11 +8,11 @@ import './Search.css'
 
 const SearchFormBox = ({ dispatch, loading, properties, hasErrors }) => {
   // TODO: Call properties list (below) from somewhere else
-  useEffect(() => {
-    dispatch(fetchProperties())
-  }, [dispatch])
-
   const [locationSelected, setLocationSelected] = useState('');
+
+  useEffect(() => {
+    dispatch(fetchProperties(locationSelected))
+  }, [dispatch])
 
   function handleInputChange(event) {
     setLocationSelected(event.target.value)
