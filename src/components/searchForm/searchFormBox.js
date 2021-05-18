@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { connect } from 'react-redux';
 import { useHistory } from 'react-router-dom';
 
@@ -6,10 +6,18 @@ import { fetchProperties } from '../../actions/propertiesActions'
 
 import './Search.css'
 
-const SearchFormBox = ({ dispatch, loading, locations, hasErrors }) => {
+// const SearchFormBox = ({ dispatch, loading, locations, hasErrors }) => {
 
-  const [ locationSelected, setLocationSelected ] = useState('');
-  const history = useHistory()
+//   const [ locationSelected, setLocationSelected ] = useState('');
+
+const SearchFormBox = ({ dispatch, locations, loading, properties, hasErrors }) => {
+  // TODO: Call properties list (below) from somewhere else
+  const [locationSelected, setLocationSelected] = useState('');
+    const history = useHistory()
+
+  useEffect(() => {
+    dispatch(fetchProperties(locationSelected))
+  }, [dispatch])
 
   function handleInputChange(event) {
     setLocationSelected(event.target.value)
