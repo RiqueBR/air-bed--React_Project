@@ -25,7 +25,7 @@ export function fetchProperties(value) {
       const response = await fetch(`/api/property/?location=${value}`)
       const data = await response.json()
 
-      dispatch(getPropertiesSuccess(data.results))
+      dispatch(getPropertiesSuccess(data))
     } catch (error) {
       dispatch(getPropertiesFailure())
     }

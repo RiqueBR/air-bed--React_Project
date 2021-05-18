@@ -1,25 +1,31 @@
 import React from 'react';
+import { connect, useStore } from 'react-redux';
+import { useParams } from "react-router-dom";
+
 import PropertyDetails from '../components/property/PropertyDetails';
 
-class SinglePropertyContainer extends React.Component {
-  constructor(props) {
-    super(props)
-    this.state = {
-      property: null
-    }
-  }
+const SinglePropertyContainer = ({property}) => {
 
+  const params = useParams()
 
-
-  render() {
-    if (!this.state.property) return null;
+  useStore()
+  
+  
+  console.log(property);
+  
 
     return (
       <div>
-        <PropertyDetails data={this.state.property} />
+        <PropertyDetails data={property} />
       </div>
     )
-  }
+  
 }
 
-export default SinglePropertyContainer;
+
+const mapStateToProps = state => ({
+  property: state.properties.properties.results[0]
+  // TODO: add errors here
+})
+
+export default connect(mapStateToProps)(SinglePropertyContainer);

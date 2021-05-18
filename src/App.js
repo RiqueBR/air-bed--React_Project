@@ -4,45 +4,42 @@ import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
 
 import { fetchLocations } from './actions/locationsActions'
 
+import PropertyList from './components/property/PropertyList'
 import Navbar from './components/Navbar';
 import HomeContainer from './views/Home'
+import SinglePropertyContainer from './views/SinglePropertyContainer'
 
 import './App.css';
 
-const App = ({dispatch}) => {
+const App = ({ dispatch }) => {
 
   useEffect(() => {
     dispatch(fetchLocations())
-  }, [dispatch])
+  }, [])
 
-    return (
+  return (
       <div>
-        <Router>
-          <React.Fragment>
-            <Navbar />
-            <Switch>
-              <Route exact path="/" render={() => {
-                return <HomeContainer  />
-              }} />
-              {/* <Route exact path="/properties" render={() => {
-                return <PropertyList data={this.state.filteredProps} />
-              }} /> */}
-              {/* <Route exact path="/properties/:id" render={(props) => {
+          <Router>
+              <React.Fragment>
+                  <Navbar />
+                  <Switch>
+                      <Route exact path="/" component={ HomeContainer }/>
+                      <Route exact path="/properties" component={ PropertyList }/>
+                      <Route exact path="/properties/:id" render={(props) => {
                 const id = props.match.params.id;
                 return <SinglePropertyContainer id={id} />;
-              }} /> */}
-            </Switch>
+              }} />
+                  </Switch>
 
-
-          </React.Fragment>
-        </Router>
+              </React.Fragment>
+          </Router>
       </div>
 
-    );
+  );
 }
 
 const mapStateToProps = state => ({
-  loading_locations: state.locations.loading,
+  loading: state.locations.loading,
   locations: state.locations,
   hasErrors: state.locations.hasErrors,
 })
