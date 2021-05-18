@@ -3,14 +3,12 @@ import { connect, useStore } from 'react-redux';
 import PropertyTile from './PropertyTile';
 
 const PropertyList = ({ properties }) => {
-  const store = useStore();
-  // console.log(properties);
+  useStore();
 
   const listResultProperties = properties.map((property) => {
     return (
         <PropertyTile key={ property.id } { ...property } />
     )
-    
   })
 
   return (

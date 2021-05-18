@@ -3,15 +3,17 @@ import { Link } from 'react-router-dom';
 
 const PropertyTile = (property) => {
 
+    console.log(property);
+
   return (
 
       <div className="property-tile">
-          <div className="place-holder-img">
+          {/* <div className="place-holder-img">
               <img className="property-image" alt="property" src={ property.imgUrl }></img>
-          </div>
+          </div> */}
           <div className="property-info-container">
               <div className="center-details">
-                  <h5 className="tile-view-type">{property.type}</h5>
+                  <h5 className="tile-view-type">{property.roomType}</h5>
                   <div className="link-container">
                       <Link className="property-link" to={ '/properties/' + property.id }>
                           {property.name}

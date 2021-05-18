@@ -15,19 +15,19 @@ const PropertyDetails = ({ data }) => {
       <div className="property-details-img-container">
 
         <div className="property-details-main-img">
-          <img className="property-main" src={data.images[0]}></img>
+          {/* <img className="property-main" src={data.images[0]}></img> */}
         </div>
 
         <div className="property-details-group-images">
 
           <div className="property-details-top-imgs">
-            <img className="property-main-inline" src={data.images[1]}></img>
-            <img className="property-main-inline" src={data.images[2]}></img>
+            {/* <img className="property-main-inline" src={data.images[1]}></img>
+            <img className="property-main-inline" src={data.images[2]}></img> */}
           </div>
 
           <div className="property-details-bottom-imgs">
-            <img className="property-main-inline" src={data.images[3]}></img>
-            <img className="property-main-inline" src={data.images[4]}></img>
+            {/* <img className="property-main-inline" src={data.images[3]}></img>
+            <img className="property-main-inline" src={data.images[4]}></img> */}
           </div>
 
         </div>
@@ -36,7 +36,7 @@ const PropertyDetails = ({ data }) => {
       <div className="center">
         <div className="details-body">
           <div className="details-left">
-            <h2 className="type" >{data.type}</h2>
+            <h2 className="type" >{data.roomType}</h2>
             <h1 className="property-title">{data.name}</h1>
             <h4 className="location">{data.location}</h4>
             <div className="property-specs-container">
@@ -54,11 +54,11 @@ const PropertyDetails = ({ data }) => {
               </div>
             </div>
             <PropertyHighlights />
-            <p className="details">{data.details}</p>
+            <p className="details">{data.info}</p>
           </div>
           <div className="details-right">
             <PropertyBookingForm data={data} />
-            <PropertyMap lat={data.lat} lon={data.lon} center={center} />
+            {/* <PropertyMap lat={data.lat} lon={data.lon} center={center} /> */}
           </div>
         </div>
       </div>
